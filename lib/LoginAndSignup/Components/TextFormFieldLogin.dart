@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:athena/screen/homepage.dart';
+=======
+>>>>>>> 1cc9df1381681563687d1df95fe5b87c61e0e455
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
@@ -200,10 +203,13 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                   Vibration.vibrate(duration: 50);
                 }
                 print("click login");
+<<<<<<< HEAD
                 Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()), // Thay Homepage() bằng widget của bạn
                       );
+=======
+>>>>>>> 1cc9df1381681563687d1df95fe5b87c61e0e455
               },
               child:Container(
                 height: 55,

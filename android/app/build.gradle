@@ -9,7 +9,10 @@ android {
     namespace = "com.example.athena"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+<<<<<<< HEAD
     ndkVersion = "25.1.8937393"
+=======
+>>>>>>> 1cc9df1381681563687d1df95fe5b87c61e0e455
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
