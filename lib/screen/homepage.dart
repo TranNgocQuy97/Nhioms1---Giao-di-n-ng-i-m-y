@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-/* void main() {
-  runApp(MyApp());
-} */
-
-/* class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-} */
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,48 +7,13 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('LINGUA MASTER', style: TextStyle(color: const Color.fromARGB(255, 90, 148, 4))),
-        // backgroundColor: Colors.green,
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Hành động khi nhấn nút Sign In
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.blue, // Màu nền nút
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7), // Khoảng cách bên trong nút
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Bo tròn các góc
-              ),
-            ),
-            child: Text(
-              'SIGN IN',
-              style: TextStyle(color: Colors.white, fontSize: 12), // Màu và kích thước chữ
-            ),
-          ),
-           SizedBox(width: 10),
-          TextButton(
-            onPressed: () {
-              // Hành động khi nhấn nút Sign In 
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.orange, // Màu nền nút
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7), // Khoảng cách bên trong nút
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Bo tròn các góc
-              ),
-            ),
-            child: Text(
-              'LOGIN',
-              style: TextStyle(color: Colors.white, fontSize: 12), // Màu và kích thước chữ
-            ),
-          ),
-        ],
+ 
       ),
       body: Column(
         children: [
           Container(
             padding: EdgeInsets.all(10.0),
-            child: Image.asset('assets/icons/banner.png'), // Thay banner.png bằng banner bạn có
+            child: Image.asset('assets/icons/banner.png'), 
           ),
           Expanded(
             child: GridView.count(
@@ -99,7 +51,7 @@ class HomePage extends StatelessWidget {
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
-          // Handle navigation tap
+        
         },
       ),
     );
@@ -114,7 +66,7 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: Image.asset(
             imagePath,
-            fit: BoxFit.contain,  // Giữ tỷ lệ hình ảnh và làm cho nó vừa với container
+            fit: BoxFit.contain,  
           ),
         ),
         SizedBox(height: 10),
