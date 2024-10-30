@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('LINGUA MASTER', style: TextStyle(color: const Color.fromARGB(255, 90, 148, 4))),
- 
+        title: Text('LINGUA MASTER', style: TextStyle(color: const Color.fromARGB(255, 90, 148, 4))),           
       ),
       body: Column(
         children: [
