@@ -1,36 +1,21 @@
 import 'package:flutter/material.dart';
-
-/* void main() {
-  runApp(MyApp());
-} */
-
-/* class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-} */
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('LINGUA MASTER', style: TextStyle(color: const Color.fromARGB(255, 90, 148, 4))),
-        // backgroundColor: Colors.green,
+       
         actions: [
           TextButton(
             onPressed: () {
-              // Hành động khi nhấn nút Sign In
+             
             },
             style: TextButton.styleFrom(
-              backgroundColor: Colors.blue, // Màu nền nút
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7), // Khoảng cách bên trong nút
+              backgroundColor: Colors.blue, 
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7), 
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Bo tròn các góc
+                borderRadius: BorderRadius.circular(20), 
               ),
             ),
             child: Text(
