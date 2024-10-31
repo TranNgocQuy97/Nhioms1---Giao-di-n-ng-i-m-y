@@ -1,22 +1,21 @@
-import 'package:athena/screen/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
 
 
-class TextFormFieldLogin extends StatefulWidget{
-  const TextFormFieldLogin({
+class LoginTextFormField extends StatefulWidget{
+  const LoginTextFormField({
     Key ? key,
   }) : super(key:key);
   @override
-  State<TextFormFieldLogin> createState() => _TextFormFieldLoginState();
+  State<LoginTextFormField> createState() => _TextFormFieldLoginState();
 }
 
-class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
+class _TextFormFieldLoginState extends State<LoginTextFormField> {
 
-  final TextEditingController _username_controller = TextEditingController();
+  final TextEditingController _email_controller = TextEditingController();
   final TextEditingController _password_controller = TextEditingController();
-
+  bool _isPressedLogin = false;
   bool _isObscured = true;
 
   void _toggleObscureText() {
@@ -27,7 +26,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
 
   @override
   void dispose() {
-    _username_controller.dispose();
+    _email_controller.dispose();
     _password_controller.dispose();
     super.dispose();
   }
@@ -41,7 +40,6 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
       body: Form(
         child: Column(
           children: [
-
             Container(
               height: 80,
               child: Column(
@@ -51,7 +49,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Username",
+                        "Email",
                         style: TextStyle(
                           color: Color.fromRGBO(150, 150, 150, 1),
                         ),
@@ -63,7 +61,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                     child: Stack(
                       children: [
                         TextFormField(
-                          controller: _username_controller,
+                          controller: _email_controller,
                           decoration: InputDecoration(
                             prefixIcon: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -94,7 +92,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                                 child: Container(
                                   width: 25,
                                   child: Image.asset(
-                                    "assets/icons/user.png",
+                                    "assets/icons/emailTextForm.png",
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -119,7 +117,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Password",
+                        "Password again",
                         style: TextStyle(
                           color: Color.fromRGBO(150, 150, 150, 1),
                         ),
@@ -145,15 +143,10 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                               ),
                             ),
                             suffixIcon: IconButton(
-                              icon: Icon(
-                                _isObscured ? Icons.visibility : Icons.visibility_off,
-                              ),
+                              icon: Icon(_isObscured ? Icons.visibility : Icons.visibility_off,),
                               onPressed: () async {
-                                print(
-                                  "click hide password"
-                                );
                                 if (await Vibration.hasVibrator() ?? false) {
-                                  Vibration.vibrate(duration: 50); // Rung máy trong 50ms
+                                  Vibration.vibrate(duration: 50);
                                 }
                                 _toggleObscureText();
                               },
@@ -195,29 +188,26 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
             SizedBox(height: 10,),
 
             GestureDetector(
-              onTap: () async {
+              onTapDown: (TapDownDetails details) async {
                 if (await Vibration.hasVibrator() ?? false) {
                   Vibration.vibrate(duration: 50);
                 }
-                print("click login");
+                setState(() {
+                  _isPressedLogin = true;
+                });
 
-                Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()), // Thay Homepage() bằng widget của bạn
-                      );
+                await Future.delayed(Duration(milliseconds: 100));
+
+                setState(() {
+                  _isPressedLogin = false;
+                });
+                print("Click login");
               },
-              child:Container(
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 30),
                 height: 55,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(152, 182, 215, 1),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      spreadRadius: 0.5,
-                      blurRadius: 2,
-                      offset: Offset(1, 1),
-                    ),
-                  ],
+                  color: Color.fromRGBO(74, 98, 138, 1),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(25),
@@ -230,7 +220,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                   children: [
                     ImageIcon(
                       AssetImage('assets/icons/rArrow.png'),
-                      size: 20.0,
+                      size: _isPressedLogin ? 19 : 20.0,
                       color: Colors.black,
                     ),
                     SizedBox(
@@ -239,7 +229,7 @@ class _TextFormFieldLoginState extends State<TextFormFieldLogin> {
                     Text(
                       "Login",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: _isPressedLogin ? 17 :18,
                         color: Colors.white,
                       ),
                     ),

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-import 'package:athena/LoginAndSignup/Components/LoginAndSighupForm.dart';
+import 'package:athena/Classes/Functions.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -54,7 +54,7 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
+    bool _isPressedStartTheCourse = false;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -81,7 +81,9 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                     Column (
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 100,),
+                        SizedBox(
+                          height: 100,
+                        ),
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 10),
                           height: 100,
@@ -112,7 +114,7 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                     ),
 
                     Column (
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 10),
@@ -145,13 +147,9 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     InkWell(
-                                        onTap: () {
-                                          showGeneralDialog(
-                                            barrierDismissible: true,
-                                            barrierLabel: "Login",
-                                            context: context,
-                                            pageBuilder: (context,_,__) => LoginAndSignupForm()
-                                          );
+                                        onTap: () async {
+                                          await Future.delayed(Duration(milliseconds: 200));
+                                          Functions.showLoginGeneralDialog(context);
                                           print('Start the course clicked!');
                                         },
                                         child: Container(
@@ -166,7 +164,7 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                                             children: [
                                               ImageIcon(
                                                 AssetImage('assets/icons/rArrow.png'),
-                                                size: 24.0,
+                                                size:  24,
                                                 color: Colors.cyan,
                                               ),
                                               SizedBox(
@@ -199,7 +197,7 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                               fontSize: 15,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],

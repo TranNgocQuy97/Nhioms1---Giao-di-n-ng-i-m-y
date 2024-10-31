@@ -1,4 +1,5 @@
 
+import 'package:athena/HomePage/HomePage.dart';
 import 'package:athena/LoginAndSignup/LoginAndSignup.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginAndSignup(),
+      // home: LoginAndSignup(),
+      home: HomePage(),
     );
   }
 }
