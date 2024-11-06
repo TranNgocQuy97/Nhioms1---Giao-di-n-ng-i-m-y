@@ -27,7 +27,7 @@ Yêu cầu hệ thống
 Cài đặt
 ```
 # Clone repository
-git clone https://github.com/yourusername/multi-language-learning-app.git
+git clone https://github.com/TranNgocQuy97/PHK-UI-Nhom-1.git
 
 # Điều hướng đến thư mục của ứng dụng Flutter
 cd multi-language-learning-app/user_app
@@ -47,7 +47,7 @@ Yêu cầu hệ thống
 Cài đặt
 ```
 # Clone repository 
-git clone https://github.com/yourusername/multi-language-learning-app.git
+git clone https://github.com/TranNgocQuy97/PHK-UI-Nhom-1.git
 ```
 ```
 # Điều hướng đến thư mục của Admin Panel:
@@ -61,16 +61,16 @@ cd multi-language-learning-app/admin_panel
 - Khởi động server và truy cập vào đường dẫn http://localhost/admin_panel để sử dụng giao diện quản trị.
 
 ## Công nghệ sử dụng
-### Flutter: Phát triển ứng dụng di động đa nền tảng cho người dùng.
-### PHP và MySQL: Xây dựng backend API và Admin Panel để quản lý dữ liệu.
-### Dart: Ngôn ngữ lập trình cho ứng dụng Flutter.
+- Flutter: Phát triển ứng dụng di động đa nền tảng cho người dùng.
+- PHP và MySQL: Xây dựng backend API và Admin Panel để quản lý dữ liệu.
+- Dart: Ngôn ngữ lập trình cho ứng dụng Flutter.
 
 ## Tính năng cần phát triển thêm
-### Tích hợp đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ cho giao diện người dùng.
-### Thông báo đẩy (Push Notification): Gửi thông báo về tiến trình học và điểm thưởng.
+- Tích hợp đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ cho giao diện người dùng.
+- Thông báo đẩy (Push Notification): Gửi thông báo về tiến trình học và điểm thưởng.
 
 ## Đóng góp
-Chào đón mọi đóng góp từ cộng đồng để làm cho ứng dụng trở nên tốt hơn! Nếu bạn muốn đóng góp, vui lòng fork repo này, tạo một nhánh mới, commit và gửi pull request.
+- Chào đón mọi đóng góp từ cộng đồng để làm cho ứng dụng trở nên tốt hơn! Nếu bạn muốn đóng góp, vui lòng fork repo này, tạo một nhánh mới, commit và gửi pull request.
 
 ## Liên hệ
-### Email: yangan1910@gmail.com
+- Email: yangan1910@gmail.com
