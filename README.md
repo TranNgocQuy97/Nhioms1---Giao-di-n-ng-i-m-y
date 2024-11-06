@@ -1,7 +1,7 @@
 # Lingua Master App
 
 ## Giới thiệu
-Multi-Language Learning App là ứng dụng học ngôn ngữ hỗ trợ người dùng học các ngôn ngữ phổ biến như Tiếng Anh, Tiếng Trung, Tiếng Hàn và Tiếng Nhật. Ứng dụng cung cấp các bài học từ vựng, ngữ pháp và bài tập tương tác nhằm giúp người học rèn luyện toàn diện kỹ năng ngôn ngữ. Ngoài ra, hệ thống còn tích hợp tính năng gamification với điểm thưởng, huy hiệu và bảng xếp hạng để tăng động lực cho người học.
+Lingua Master App là ứng dụng học ngôn ngữ hỗ trợ người dùng học các ngôn ngữ phổ biến như Tiếng Anh, Tiếng Trung, Tiếng Hàn và Tiếng Nhật. Ứng dụng cung cấp các bài học từ vựng, ngữ pháp và bài tập tương tác nhằm giúp người học rèn luyện toàn diện kỹ năng ngôn ngữ. Ngoài ra, hệ thống còn tích hợp tính năng gamification với điểm thưởng, huy hiệu và bảng xếp hạng để tăng động lực cho người học.
 
 ## Tính năng chính
 ### Phần Người dùng (User App - Flutter)
