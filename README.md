@@ -53,11 +53,11 @@ git clone https://github.com/TranNgocQuy97/PHK-UI-Nhom-1.git
 # Điều hướng đến thư mục của Admin Panel:
 cd multi-language-learning-app/admin_panel
 ```
-### Cấu hình cơ sở dữ liệu:
+Cấu hình cơ sở dữ liệu:
 - Tạo một cơ sở dữ liệu MySQL cho ứng dụng và nhập file SQL có sẵn (database.sql) để tạo bảng dữ liệu.
 - Cập nhật thông tin cấu hình cơ sở dữ liệu trong file config.php.
 
-### Chạy ứng dụng trên server:
+Chạy ứng dụng trên server:
 - Khởi động server và truy cập vào đường dẫn http://localhost/admin_panel để sử dụng giao diện quản trị.
 
 ## Công nghệ sử dụng
