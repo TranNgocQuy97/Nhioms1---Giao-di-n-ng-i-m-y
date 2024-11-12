@@ -1,0 +1,1880 @@
+{
+    "languages": [
+        {
+            "id": 1,
+            "name": "ENGLISH",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "GIAO TIẾP TIẾNG ANH",
+                    "lessons": [
+                        {
+                            "id": 1,
+                            "name": "PHẦN 1: GREETINGS",
+                            "level": 1,
+                            "exercises": [
+                                {
+                                    "id": 1,
+                                    "name": "Video bài giảng",
+                                    "type": "Video",
+                                    "questions": [
+                                        {
+                                            "id": 1,
+                                            "name": "Video bài giảng",
+                                            "video_url": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard",
+                                    "questions": [
+                                        {
+                                            "id": 2,
+                                            "name": "Hi.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 3,
+                                            "name": "Hello.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 4,
+                                            "name": "Hey.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 5,
+                                            "name": "Good morning.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 6,
+                                            "name": "Morning.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 7,
+                                            "name": "Good afternoon.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 8,
+                                            "name": "Good evening.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 9,
+                                            "name": "Nice to meet you.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 10,
+                                            "name": "Nice to meet you, too.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 11,
+                                            "name": "Great to meet you.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 12,
+                                            "name": "Goodbye.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 13,
+                                            "name": "See you soon.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 14,
+                                            "name": "See you again.",
+                                            "audio_url": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard",
+                                    "questions": [
+                                        {
+                                            "id": 158,
+                                            "name": "What is your name? - My name is Alex Bennett.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 159,
+                                            "name": "What's your name? - I'm Liam Scott.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 160,
+                                            "name": "What's my name? - Your name's Ethan Carter.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 161,
+                                            "name": "How are you? - I'm fine, thanks.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 162,
+                                            "name": "How are you doing? - All good.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 163,
+                                            "name": "How have you been lately? - Pretty well.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 164,
+                                            "name": "How have you been lately? - I'm good, as usual.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 165,
+                                            "name": "How are you today? - Very well! Thank you.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 166,
+                                            "name": "What is your full name? - My fullname is Alex Bennett.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 167,
+                                            "name": "How do you spell your name? - A L E X and B E N N E T T.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 168,
+                                            "name": "What is your last name? - My last name is Carter.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 169,
+                                            "name": "How do you spell your last name? - It's C A R T E R.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 170,
+                                            "name": "Could you spell your first name? - It's A L E X.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 171,
+                                            "name": "What's your middle name? - My middle name is James.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 172,
+                                            "name": "Could you spell your middle name, please? - It's J A M E S.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 173,
+                                            "name": "How is it going? - Not bad.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 174,
+                                            "name": "How's your day? - Pretty good so far.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 175,
+                                            "name": "What's up? - Lovely as always!",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 176,
+                                            "name": "Who is he? - He is Noah Williams.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 177,
+                                            "name": "Who's she? - She's Emma Robinson.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 178,
+                                            "name": "Who are they? - They are Emma and Noah.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 179,
+                                            "name": "Who are you? - I am Alex Bennett.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 180,
+                                            "name": "Where are you from? - I'm from Malaysia.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 181,
+                                            "name": "Are you Malaysian? - Yes, I'm Malaysian.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 182,
+                                            "name": "Are you from Malaysia? - No, I'm not from Malaysia.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 183,
+                                            "name": "How old are you? - I'm 27 years old.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 184,
+                                            "name": "What is your address? - It's 123 Orchard Avenue.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 185,
+                                            "name": "On which floor is your apartment? - My apartment is on the 5th floor.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 186,
+                                            "name": "Is your apartment on the 5th floor? - Yes, my apartment is on the 5th floor.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 187,
+                                            "name": "On which floor is your room? - My room is on the 2nd floor of the building.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 188,
+                                            "name": "Is your room on the 2nd floor of the building? - Yes, my room is on the 2nd floor of the building.",
+                                            "audio_url": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer",
+                                    "questions": [
+                                        {
+                                            "id": 189,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 190,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 191,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 192,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 193,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 194,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 195,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 196,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 197,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 198,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 199,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 200,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 201,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 202,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 203,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 204,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 205,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 206,
+                                            "name": "Listen and write the correct answer.",
+                                            "audio_url": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 5,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer",
+                                    "questions": [
+                                        {
+                                            "id": 345,
+                                            "question": "What is your name? - _______ is Alex Bennett.",
+                                            "options": [
+                                                "My",
+                                                "Your",
+                                                "His",
+                                                "Her"
+                                            ],
+                                            "correct_answer": "My",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 346,
+                                            "question": "What's your name? - _______ Liam Scott.",
+                                            "options": [
+                                                "I am",
+                                                "I",
+                                                "My",
+                                                "I'm"
+                                            ],
+                                            "correct_answer": "I'm",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 347,
+                                            "question": "_______ my name? - Your name's Ethan Carter.",
+                                            "options": [
+                                                "What is",
+                                                "What's",
+                                                "How is",
+                                                "How's"
+                                            ],
+                                            "correct_answer": "What's",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 348,
+                                            "question": "How are you? - _______, thanks.",
+                                            "options": [
+                                                "I'm fine",
+                                                "I am",
+                                                "I'm good",
+                                                "All good"
+                                            ],
+                                            "correct_answer": "I'm fine",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 349,
+                                            "question": "How are you doing? - _______.",
+                                            "options": [
+                                                "Good",
+                                                "Well",
+                                                "All good",
+                                                "Fine"
+                                            ],
+                                            "correct_answer": "All good",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 350,
+                                            "question": "How have you been lately? - _______.",
+                                            "options": [
+                                                "Pretty well",
+                                                "All good",
+                                                "Fine",
+                                                "Doing well"
+                                            ],
+                                            "correct_answer": "Pretty well",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 351,
+                                            "question": "How have you been lately? - _______, as usual.",
+                                            "options": [
+                                                "Doing fine",
+                                                "All good",
+                                                "Pretty well",
+                                                "Fine"
+                                            ],
+                                            "correct_answer": "All good",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 352,
+                                            "question": "How are you today? - Very well! _______.",
+                                            "options": [
+                                                "Thank you",
+                                                "Thanks",
+                                                "Fine",
+                                                "Good"
+                                            ],
+                                            "correct_answer": "Thank you",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 353,
+                                            "question": "What is your full name? - _______ is Alex Bennett.",
+                                            "options": [
+                                                "My",
+                                                "This",
+                                                "That",
+                                                "It"
+                                            ],
+                                            "correct_answer": "My",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 354,
+                                            "question": "How do you _______ your name? - A L E X and B E N N E T T.",
+                                            "options": [
+                                                "write",
+                                                "spell",
+                                                "say",
+                                                "pronounce"
+                                            ],
+                                            "correct_answer": "spell",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 355,
+                                            "question": "What is your _______? - My last name is Carter.",
+                                            "options": [
+                                                "first name",
+                                                "middle name",
+                                                "last name",
+                                                "address"
+                                            ],
+                                            "correct_answer": "last name",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 356,
+                                            "question": "How do you spell your last name? - It's _______.",
+                                            "options": [
+                                                "CARTER",
+                                                "Bennett",
+                                                "Smith",
+                                                "Robinson"
+                                            ],
+                                            "correct_answer": "CARTER",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 357,
+                                            "question": "Could you spell your first name? - It's _______.",
+                                            "options": [
+                                                "A L E X",
+                                                "L I A M",
+                                                "E T H A N",
+                                                "J A M E S"
+                                            ],
+                                            "correct_answer": "A L E X",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 358,
+                                            "question": "What's your middle name? - My _______ is James.",
+                                            "options": [
+                                                "surname",
+                                                "middle name",
+                                                "first name",
+                                                "last name"
+                                            ],
+                                            "correct_answer": "middle name",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 359,
+                                            "question": "Could you spell your middle name, please? - It's _______.",
+                                            "options": [
+                                                "J A M E S",
+                                                "J O H N",
+                                                "E T H A N",
+                                                "A L E X"
+                                            ],
+                                            "correct_answer": "J A M E S",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 360,
+                                            "question": "How is it going? - _______.",
+                                            "options": [
+                                                "Good",
+                                                "Fine",
+                                                "Not bad",
+                                                "Doing great"
+                                            ],
+                                            "correct_answer": "Not bad",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 361,
+                                            "question": "How's your day? - _______.",
+                                            "options": [
+                                                "Good",
+                                                "Fine",
+                                                "Pretty good",
+                                                "Great"
+                                            ],
+                                            "correct_answer": "Pretty good",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 362,
+                                            "question": "_______ - Lovely as always!",
+                                            "options": [
+                                                "What's up",
+                                                "How are you",
+                                                "How's it going",
+                                                "What's new"
+                                            ],
+                                            "correct_answer": "What's up",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 363,
+                                            "question": "_______ - He is Noah Williams.",
+                                            "options": [
+                                                "Who is he",
+                                                "What's his name",
+                                                "Who are they",
+                                                "Who are you"
+                                            ],
+                                            "correct_answer": "Who is he",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 364,
+                                            "question": "Who's she? - _______.",
+                                            "options": [
+                                                "She's Emma",
+                                                "Her name is Emma",
+                                                "It's Emma",
+                                                "She's Lily"
+                                            ],
+                                            "correct_answer": "She's Emma",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 365,
+                                            "question": "Who are they? - _______ Emma and Noah.",
+                                            "options": [
+                                                "It’s",
+                                                "They’re",
+                                                "They are",
+                                                "These are"
+                                            ],
+                                            "correct_answer": "They are",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 366,
+                                            "question": "Who are you? - _______ Alex Bennett.",
+                                            "options": [
+                                                "I am",
+                                                "I'm",
+                                                "This is",
+                                                "That’s"
+                                            ],
+                                            "correct_answer": "I'm",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 367,
+                                            "question": "Where are you from? - I'm from _______.",
+                                            "options": [
+                                                "Malaysia",
+                                                "Singapore",
+                                                "Vietnam",
+                                                "Thailand"
+                                            ],
+                                            "correct_answer": "Malaysia",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 368,
+                                            "question": "Are you Malaysian? - Yes, I'm _______.",
+                                            "options": [
+                                                "Malaysian",
+                                                "Vietnamese",
+                                                "Thai",
+                                                "Singaporean"
+                                            ],
+                                            "correct_answer": "Malaysian",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 369,
+                                            "question": "Are you from Malaysia? - No, I'm not from _______.",
+                                            "options": [
+                                                "Malaysia",
+                                                "Singapore",
+                                                "Vietnam",
+                                                "Thailand"
+                                            ],
+                                            "correct_answer": "Malaysia",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 370,
+                                            "question": "How old are you? - _______.",
+                                            "options": [
+                                                "I am 27",
+                                                "I’m 30",
+                                                "I am 25",
+                                                "I’m 22"
+                                            ],
+                                            "correct_answer": "I am 27",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 371,
+                                            "question": "What is your address? - It's _______.",
+                                            "options": [
+                                                "123 Orchard Avenue",
+                                                "123 Maple Street",
+                                                "45 Pine Lane",
+                                                "789 Oak Road"
+                                            ],
+                                            "correct_answer": "123 Orchard Avenue",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 372,
+                                            "question": "On which floor is your apartment? - My apartment is on the _______.",
+                                            "options": [
+                                                "5th",
+                                                "1st",
+                                                "2nd",
+                                                "3rd"
+                                            ],
+                                            "correct_answer": "5th",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 373,
+                                            "question": "Is your apartment on the 5th floor? - Yes, _______ is on the 5th floor.",
+                                            "options": [
+                                                "my apartment",
+                                                "my room",
+                                                "it",
+                                                "this"
+                                            ],
+                                            "correct_answer": "my apartment",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 374,
+                                            "question": "On which floor is your room? - _______ is on the 2nd floor of the building.",
+                                            "options": [
+                                                "My room",
+                                                "My apartment",
+                                                "It",
+                                                "This room"
+                                            ],
+                                            "correct_answer": "My room",
+                                            "audio_url": ""
+                                        },
+                                        {
+                                            "id": 375,
+                                            "question": "Is your room on the 2nd floor of the building? - Yes, my room is on the _______ of the building.",
+                                            "options": [
+                                                "2nd",
+                                                "3rd",
+                                                "1st",
+                                                "5th"
+                                            ],
+                                            "correct_answer": "2nd",
+                                            "audio_url": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "name": "PHẦN 2: MY HOUSE",
+                            "level": 1,
+                            "exercises": [
+                                {
+                                    "id": 6,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 7,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 8,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 9,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 10,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "name": "PHẦN 3: MY FAMILY",
+                            "level": 1,
+                            "exercises": [
+                                {
+                                    "id": 11,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 12,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 13,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 14,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 15,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "name": "PHẦN 4: JOBS",
+                            "level": 2,
+                            "exercises": [
+                                {
+                                    "id": 16,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 17,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 18,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 19,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 20,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "name": "PHẦN 5: HOBBIES AND ABILITIES",
+                            "level": 2,
+                            "exercises": [
+                                {
+                                    "id": 21,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 22,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 23,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 24,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 25,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "name": "PHẦN 6: GOOD AND BAD HABITS",
+                            "level": 2,
+                            "exercises": [
+                                {
+                                    "id": 26,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 27,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 28,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 29,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 30,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "name": "PHẦN 7: TIME AND SEASONS",
+                            "level": 2,
+                            "exercises": [
+                                {
+                                    "id": 31,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 32,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 33,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 34,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 35,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "name": "PHẦN 8: SENSES AND FEELINGS",
+                            "level": 3,
+                            "exercises": [
+                                {
+                                    "id": 36,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 37,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 38,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 39,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 40,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "name": "PHẦN 9: EDUCATION",
+                            "level": 3,
+                            "exercises": [
+                                {
+                                    "id": 41,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 42,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 43,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 44,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 45,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "name": "PHẦN 10: SOCIAL SITUATIONS",
+                            "level": 3,
+                            "exercises": [
+                                {
+                                    "id": 46,
+                                    "name": "Video bài giảng",
+                                    "type": "Video"
+                                },
+                                {
+                                    "id": 47,
+                                    "name": "Từ vựng",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 48,
+                                    "name": "Mẫu câu",
+                                    "type": "Flashcard"
+                                },
+                                {
+                                    "id": 49,
+                                    "name": "Bài tập từ vựng",
+                                    "type": "Write correct answer"
+                                },
+                                {
+                                    "id": 50,
+                                    "name": "Bài tập mẫu câu",
+                                    "type": "Choose correct answer"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "PHÁT ÂM TIẾNG ANH",
+                    "lessons": [
+                        {
+                            "id": 11,
+                            "name": "Bài 0 - Letters and sounds",
+                            "level": 1
+                        },
+                        {
+                            "id": 12,
+                            "name": "Bài 1 - /ʌ/ and /ɑ:/",
+                            "level": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Bài 2 - /ʊ/ and /uː/",
+                            "level": 1
+                        },
+                        {
+                            "id": 14,
+                            "name": "Bài 3 - /e/ and /æ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 15,
+                            "name": "Bài 4 - /ɪ/ and /i:/",
+                            "level": 1
+                        },
+                        {
+                            "id": 16,
+                            "name": "Bài 5 - /ɒ/ and /ɔ:/",
+                            "level": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Bài 6 - /ə/ and /ɜ:/",
+                            "level": 1
+                        },
+                        {
+                            "id": 18,
+                            "name": "Bài 7 - /eɪ/, /aɪ/, /ɔɪ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 19,
+                            "name": "Bài 8 - /əʊ/ and /aʊ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 20,
+                            "name": "Bài 9 - /ɪə/, /eə/, /ʊə/",
+                            "level": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Bài 10 - /p/ and /b/",
+                            "level": 1
+                        },
+                        {
+                            "id": 22,
+                            "name": "Bài 11 - /t/ and /d/",
+                            "level": 1
+                        },
+                        {
+                            "id": 23,
+                            "name": "Bài 12 - /k/ and /g/",
+                            "level": 1
+                        },
+                        {
+                            "id": 24,
+                            "name": "Bài 13 - /l/ and /r/",
+                            "level": 1
+                        },
+                        {
+                            "id": 25,
+                            "name": "Bài 14 - /tʃ/ and /dʒ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 26,
+                            "name": "Bài 15 - /f/ and /v/",
+                            "level": 1
+                        },
+                        {
+                            "id": 27,
+                            "name": "Bài 16 - /θ/ and /ð/",
+                            "level": 1
+                        },
+                        {
+                            "id": 28,
+                            "name": "Bài 17 - /s/ and /z/",
+                            "level": 1
+                        },
+                        {
+                            "id": 29,
+                            "name": "Bài 18 - /ʃ/ and /ʒ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 30,
+                            "name": "Bài 19 - /m/, /n/, /ŋ/",
+                            "level": 1
+                        },
+                        {
+                            "id": 31,
+                            "name": "Bài 20 - /h/",
+                            "level": 1
+                        },
+                        {
+                            "id": 32,
+                            "name": "Bài 21 - /w/ and /j/",
+                            "level": 1
+                        },
+                        {
+                            "id": 33,
+                            "name": "Bài 22 - Stress in two-syllable words",
+                            "level": 2
+                        },
+                        {
+                            "id": 34,
+                            "name": "Bài 23 - Stress in three-syllable words",
+                            "level": 2
+                        },
+                        {
+                            "id": 35,
+                            "name": "Bài 24 - Falling intonation",
+                            "level": 2
+                        },
+                        {
+                            "id": 36,
+                            "name": "Bài 25 - Rising intonation",
+                            "level": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "NGỮ PHÁP TIẾNG ANH",
+                    "lessons": [
+                        {
+                            "id": 37,
+                            "name": "CĐ 1. Hiện tại đơn (Present simple)",
+                            "level": 2
+                        },
+                        {
+                            "id": 38,
+                            "name": "CĐ 2. Hiện tại tiếp diễn (Present Continuous)",
+                            "level": 2
+                        },
+                        {
+                            "id": 39,
+                            "name": "CĐ 3. Quá khứ đơn (Past Simple)",
+                            "level": 2
+                        },
+                        {
+                            "id": 40,
+                            "name": "CĐ 4. Quá khứ tiếp diễn (Past Continuous)",
+                            "level": 2
+                        },
+                        {
+                            "id": 41,
+                            "name": "CĐ 5. Hiện tại hoàn thành (Present Perfect)",
+                            "level": 2
+                        },
+                        {
+                            "id": 42,
+                            "name": "CĐ 6. Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous)",
+                            "level": 2
+                        },
+                        {
+                            "id": 43,
+                            "name": "CĐ 7. Quá khứ hoàn thành (Past Perfect)",
+                            "level": 2
+                        },
+                        {
+                            "id": 44,
+                            "name": "CĐ 8. Quá khứ hoàn thành tiếp diễn (Past Perfect Continuous)",
+                            "level": 2
+                        },
+                        {
+                            "id": 45,
+                            "name": "CĐ 9. Tương lai đơn (Future Simple)",
+                            "level": 2
+                        },
+                        {
+                            "id": 46,
+                            "name": "CĐ 10. Tương lai tiếp diễn (Future Continuous)",
+                            "level": 2
+                        },
+                        {
+                            "id": 47,
+                            "name": "CĐ 11. Tương lai hoàn thành (Future Perfect)",
+                            "level": 2
+                        },
+                        {
+                            "id": 48,
+                            "name": "CĐ 12. Tương lai hoàn thành tiếp diễn (Future Perfect Continuous)",
+                            "level": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "CHINESE",
+            "courses": [
+                {
+                    "id": 4,
+                    "name": "GIAO TIẾP TIẾNG TRUNG",
+                    "lessons": [
+                        {
+                            "id": 49,
+                            "name": "PHẦN 1: 问候 (Chào hỏi)",
+                            "level": 1
+                        },
+                        {
+                            "id": 50,
+                            "name": "PHẦN 2: 我的房子 (Ngôi nhà của tôi)",
+                            "level": 1
+                        },
+                        {
+                            "id": 51,
+                            "name": "PHẦN 3: 我的家庭 (Gia đình của tôi)",
+                            "level": 1
+                        },
+                        {
+                            "id": 52,
+                            "name": "PHẦN 4: 工作 (Nghề nghiệp)",
+                            "level": 2
+                        },
+                        {
+                            "id": 53,
+                            "name": "PHẦN 5: 爱好和能力 (Sở thích và Năng lực)",
+                            "level": 2
+                        },
+                        {
+                            "id": 54,
+                            "name": "PHẦN 6: 好习惯和坏习惯 (Thói quen tốt và xấu)",
+                            "level": 2
+                        },
+                        {
+                            "id": 55,
+                            "name": "PHẦN 7: 时间和季节 (Thời gian và mùa)",
+                            "level": 2
+                        },
+                        {
+                            "id": 56,
+                            "name": "PHẦN 8: 感觉和感受 (Cảm xúc và cảm giác)",
+                            "level": 3
+                        },
+                        {
+                            "id": 57,
+                            "name": "PHẦN 9: 教育 (Giáo dục)",
+                            "level": 3
+                        },
+                        {
+                            "id": 58,
+                            "name": "PHẦN 10: 实际情况 (Tình huống xã hội)",
+                            "level": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "PHÁT ÂM TIẾNG TRUNG",
+                    "lessons": [
+                        {
+                            "id": 59,
+                            "name": "PHẦN I: 韵母 (Vận mẫu)",
+                            "level": 1
+                        },
+                        {
+                            "id": 60,
+                            "name": "PHẦN II: 声母 (Thanh mẫu)",
+                            "level": 1
+                        },
+                        {
+                            "id": 61,
+                            "name": "PHẦN III: 声韵母拼合规律 (Quy tắc ghép chữ)",
+                            "level": 2
+                        },
+                        {
+                            "id": 62,
+                            "name": "PHẦN IV: 变调规则 (Nguyên tắc biến âm)",
+                            "level": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "TỪ VỰNG TIẾNG TRUNG",
+                    "lessons": [
+                        {
+                            "id": 63,
+                            "name": "Unit 1: Chào hỏi",
+                            "level": 1
+                        },
+                        {
+                            "id": 64,
+                            "name": "Unit 2: Tên",
+                            "level": 1
+                        },
+                        {
+                            "id": 65,
+                            "name": "Unit 3: Quốc gia",
+                            "level": 1
+                        },
+                        {
+                            "id": 66,
+                            "name": "Unit 4: Số",
+                            "level": 1
+                        },
+                        {
+                            "id": 67,
+                            "name": "Unit 5: Gia đình",
+                            "level": 1
+                        },
+                        {
+                            "id": 68,
+                            "name": "Unit 6: Nghề nghiệp",
+                            "level": 2
+                        },
+                        {
+                            "id": 69,
+                            "name": "Unit 7: Bộ phận cơ thể",
+                            "level": 2
+                        },
+                        {
+                            "id": 70,
+                            "name": "Unit 9: Đồ ăn",
+                            "level": 2
+                        },
+                        {
+                            "id": 71,
+                            "name": "Unit 10: Thức uống",
+                            "level": 2
+                        },
+                        {
+                            "id": 72,
+                            "name": "Unit 11: Đồ chơi",
+                            "level": 2
+                        },
+                        {
+                            "id": 73,
+                            "name": "Unit 12: Màu sắc",
+                            "level": 2
+                        },
+                        {
+                            "id": 74,
+                            "name": "Unit 13: Quần áo",
+                            "level": 2
+                        },
+                        {
+                            "id": 75,
+                            "name": "Unit 14: Trạng thái cảm xúc",
+                            "level": 2
+                        },
+                        {
+                            "id": 76,
+                            "name": "Unit 15: Sinh nhật",
+                            "level": 2
+                        },
+                        {
+                            "id": 77,
+                            "name": "Unit 17: Ngôi nhà",
+                            "level": 2
+                        },
+                        {
+                            "id": 78,
+                            "name": "Unit 18: Đồ vật",
+                            "level": 2
+                        },
+                        {
+                            "id": 79,
+                            "name": "Unit 19: Phương hướng",
+                            "level": 2
+                        },
+                        {
+                            "id": 80,
+                            "name": "Unit 20: Trường học",
+                            "level": 2
+                        },
+                        {
+                            "id": 81,
+                            "name": "Unit 21: Ngày trong tuần",
+                            "level": 2
+                        },
+                        {
+                            "id": 82,
+                            "name": "Unit 22: Môn học",
+                            "level": 2
+                        },
+                        {
+                            "id": 83,
+                            "name": "Unit 24: Giờ giấc - Thời gian biểu",
+                            "level": 2
+                        },
+                        {
+                            "id": 84,
+                            "name": "Unit 25: Hoạt động hằng ngày",
+                            "level": 2
+                        },
+                        {
+                            "id": 85,
+                            "name": "Unit 26: Thể thao",
+                            "level": 2
+                        },
+                        {
+                            "id": 86,
+                            "name": "Unit 27: Sở thích",
+                            "level": 2
+                        },
+                        {
+                            "id": 87,
+                            "name": "Unit 29: Thời tiết",
+                            "level": 2
+                        },
+                        {
+                            "id": 88,
+                            "name": "Unit 30: Xe cộ",
+                            "level": 2
+                        },
+                        {
+                            "id": 89,
+                            "name": "Unit 31: Kỳ nghỉ",
+                            "level": 2
+                        },
+                        {
+                            "id": 90,
+                            "name": "Unit 32: Y tế",
+                            "level": 2
+                        },
+                        {
+                            "id": 91,
+                            "name": "Unit 33: Đề nghị",
+                            "level": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "JAPANESE",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "GIAO TIẾP TIẾNG NHẬT",
+                    "lessons": [
+                        {
+                            "id": 92,
+                            "name": "PHẦN 1: 挨拶 (あいさつ) /CHÀO HỎI",
+                            "level": 1
+                        },
+                        {
+                            "id": 93,
+                            "name": "PHẦN 2: 家 (いえ) / NGÔI NHÀ",
+                            "level": 1
+                        },
+                        {
+                            "id": 94,
+                            "name": "PHẦN 3: 家族 (かぞく) / GIA ĐÌNH",
+                            "level": 1
+                        },
+                        {
+                            "id": 95,
+                            "name": "PHẦN 4: 職業 (しょくぎょう) / NGHỀ NGHIỆP",
+                            "level": 2
+                        },
+                        {
+                            "id": 96,
+                            "name": "PHẦN 5: 趣味と能力 (しゅみとのうりょく) / SỞ THÍCH VÀ NĂNG LỰC",
+                            "level": 2
+                        },
+                        {
+                            "id": 97,
+                            "name": "PHẦN 6: 良い習慣と悪い習慣 (よいしゅうかんとわるいしゅうかん) / THÓI QUEN TỐT VÀ XẤU",
+                            "level": 2
+                        },
+                        {
+                            "id": 98,
+                            "name": "PHẦN 7: 時間と季節 (じかんときせつ) / THỜI GIAN VÀ MÙA",
+                            "level": 2
+                        },
+                        {
+                            "id": 99,
+                            "name": "PHẦN 8: 感覚と感触 (かんかくとかんしょく) / CẢM GIÁC VÀ CẢM XÚC",
+                            "level": 3
+                        },
+                        {
+                            "id": 100,
+                            "name": "PHẦN 9: 教育 (きょういく) / GIÁO DỤC",
+                            "level": 3
+                        },
+                        {
+                            "id": 101,
+                            "name": "PHẦN 10: 社会的状況 (しゃかいてきじょうきょう) / TÌNH HUỐNG XÃ HỘI",
+                            "level": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "PHÁT ÂM TIẾNG NHẬT",
+                    "lessons": [
+                        {
+                            "id": 102,
+                            "name": "Day 1: あ行とか行のひらがな (Chữ cái hàng A và Ka của bảng Hiragana) - Học thử",
+                            "level": 2
+                        },
+                        {
+                            "id": 103,
+                            "name": "Day 2: さ行とた行のひらがな (Chữ cái hàng Sa và Ta của bảng Hiragana) - Học thử",
+                            "level": 2
+                        },
+                        {
+                            "id": 104,
+                            "name": "Day 3: な行とは行のひらがな (Chữ cái hàng Na và Ha của bảng Hiragana) - Học thử",
+                            "level": 2
+                        },
+                        {
+                            "id": 105,
+                            "name": "Day 4: ま行と や 行のひらがな (Chữ cái hàng Ma và Ya của bảng Hiragana) - Học thử",
+                            "level": 2
+                        },
+                        {
+                            "id": 106,
+                            "name": "Day 5: ら行、わ行と「ん」のひらがな (Chữ cái hàng Ra, Wa và chữ N của bảng Hiragana) - Học thử",
+                            "level": 2
+                        },
+                        {
+                            "id": 107,
+                            "name": "Day 6: が行とざ行のひらがな (Chữ cái hàng Ga, Za của bảng Hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 108,
+                            "name": "Day 7: だ行とば行、ぱ行のひらがな (Chữ cái hàng Da, Ba, Pa của bảng Hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 109,
+                            "name": "Day 8: ひらがなの促音と長音 (Âm Ngắt, Trường Âm của bảng Hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 110,
+                            "name": "Day 9: ひらがなの拗音と拗音の長音 (Âm ghép và trường âm của âm ghép trong bảng Hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 111,
+                            "name": "Day 10: ひらがなの復習 (Luyện tập bảng hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 112,
+                            "name": "Day 11: ひらがなの46の基本文字復習 (Luyện tập 46 chữ cái cơ bản của Hiragana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 113,
+                            "name": "Day 12: カタカナの紹介＋カタカナのア行とカ行 (giới thiệu về bảng Katakana + hàng A và Ka của Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 114,
+                            "name": "Day 13: カタカナのサ行とタ行 (Chữ cái hàng Sa và Ta của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 115,
+                            "name": "Day 14: カタカナのナ行とハ行 (Chữ cái hàng Na và Ha của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 116,
+                            "name": "Day 15: カタカナのマ行と ヤ 行 (Chữ cái hàng Ma và Ya của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 117,
+                            "name": "Day 16: カタカナのラ行、ワ行とン (Chữ cái hàng Ra, Wa và chữ N của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 118,
+                            "name": "Day 17: カタカナのガ行とザ行 (Chữ cái hàng Ga, Za của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 119,
+                            "name": "Day 18: カタカナのダ行とバ行、パ行 (Chữ cái hàng Da, Ba, Pa của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 120,
+                            "name": "Day 19: カタカナの促音と長音 (Âm Ngắt, Trường Âm của bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 121,
+                            "name": "Day 20: カタカナの拗音と拗音の長音(Âm ghép và trường âm của âm ghép trong bảng Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 122,
+                            "name": "Day 21: カタカナの46の基本文字の復習 (Luyện tập 46 chữ cái cơ bản của Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 123,
+                            "name": "Day 22: カタカナの濁音、拗音、促音と長音の復習(Luyện tập âm đục, âm ghép, âm ngắt và trường âm của Katakana)",
+                            "level": 2
+                        },
+                        {
+                            "id": 124,
+                            "name": "Day 23: Các chữ Hán cơ bản (1): 一 (Nhất)、二 (Nhị)、三 (Tam)、四 (Tứ)、五 (Ngũ)、六 (Lục)、七 (Thất)、八 (Bát)、九 (Cửu)、十 (Thập)",
+                            "level": 2
+                        },
+                        {
+                            "id": 125,
+                            "name": "Day 24: Các chữ Hán cơ bản (2): 百 (Bách)、千 (Thiên)、万 (Vạn)、円 (Viên)、口 (Khẩu)、目 (Mục)、刀 (Đao)、人 (Nhân)",
+                            "level": 3
+                        },
+                        {
+                            "id": 126,
+                            "name": "Day 25: Các chữ Hán cơ bản (3): 日 (Nhật)、月 (Nguyệt)、火 (Hỏa)、水 (Thủy)、木 (Mộc)、金 (Kim)、土 (Thổ)、曜 (Diệu)",
+                            "level": 3
+                        },
+                        {
+                            "id": 127,
+                            "name": "Day 26: Các chữ Hán cơ bản (4): 毎 (Mỗi)、明 (Minh)、半 (Bán)、時 (Thời)、分 (Phân)、今 (Kim)、去 (Khứ)、年 (Niên)",
+                            "level": 3
+                        },
+                        {
+                            "id": 128,
+                            "name": "Day 27: Các chữ Hán cơ bản (5): 上 (Thượng)、下 (Hạ)、中 (Trung)、外 (Ngoại)、右 (Hữu)、左 (Tả)、東 (Đông)、西 (Tây)、南 (Nam)、北 (Bắc)",
+                            "level": 3
+                        },
+                        {
+                            "id": 129,
+                            "name": "Day 28: Các chữ Hán cơ bản (6): 午 (Ngọ)、前 (Tiền)、後 (Hậu)、間 (Gian)、門 (Môn)、先 (Tiên)、周 (Chu)、週 (Chu)",
+                            "level": 3
+                        },
+                        {
+                            "id": 130,
+                            "name": "Day 29: Các chữ Hán cơ bản (7): 力 (Lực)、男 (Nam)、女 (Nữ)、子 (Tử)、父 (Phụ)、母 (Mẫu)、学 (Học)、生 (Sinh)、入 (Nhập)、出 (Xuất)",
+                            "level": 3
+                        },
+                        {
+                            "id": 131,
+                            "name": "Day 30: Các chữ Hán cơ bản (8): 王 (Vương)、国 (Quốc)、寺 (Tự)、田 (Điền)、何 (Hà)、山 (San, Sơn)、川 (Xuyên)、本 (Bổn, Bản)",
+                            "level": 3
+                        },
+                        {
+                            "id": 132,
+                            "name": "Day 31: Các chữ Hán cơ bản (9): 大 (Đại)、小 (Tiểu)、長 (Trường)、短 (Đoản)、高 (Cao)、低 (Đê)、安 (An)、多 (Đa)、少 (Thiểu)",
+                            "level": 3
+                        },
+                        {
+                            "id": 133,
+                            "name": "Day 32: Các chữ Hán cơ bản (10): 新 (Tân)、古 (Cổ)、見 (Kiến)、行 (Hành)、来 (Lai)、食 (Thực)、飲 (Ẩm)",
+                            "level": 3
+                        },
+                        {
+                            "id": 134,
+                            "name": "Day 33: Các chữ Hán cơ bản (11): 耳 (Nhĩ)、聞 (Văn)、言 (Ngôn)、話 (Thoại)、読 (Độc)、休 (Hưu)、会 (Hội)",
+                            "level": 3
+                        },
+                        {
+                            "id": 135,
+                            "name": "Day 34: Các chữ Hán cơ bản (12): 天 (Thiên)、気 (Khí)、雨 (Vũ)、有 (Hữu)、名 (Danh)、友 (Hữu)、立 (Lập)",
+                            "level": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "KOREAN",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "GIAO TIẾP TIẾNG HÀN",
+                    "lessons": [
+                        {
+                            "id": 136,
+                            "name": "PHẦN 1: 인사 (CHÀO HỎI)",
+                            "level": 1
+                        },
+                        {
+                            "id": 137,
+                            "name": "PHẦN 2: 나의 집 (NGÔI NHÀ CỦA TÔI)",
+                            "level": 1
+                        },
+                        {
+                            "id": 138,
+                            "name": "PHẦN 3: 나의 가족 (GIA ĐÌNH CỦA TÔI)",
+                            "level": 1
+                        },
+                        {
+                            "id": 139,
+                            "name": "PHẦN 4: 직업 (NGHỀ NGHIỆP)",
+                            "level": 2
+                        },
+                        {
+                            "id": 140,
+                            "name": "PHẦN 5: 취미와 능력 (SỞ THÍCH VÀ NĂNG LỰC)",
+                            "level": 2
+                        },
+                        {
+                            "id": 141,
+                            "name": "PHẦN 6: 좋은 버릇과 나쁜 버릇 (THÓI QUEN TỐT VÀ XẤU)",
+                            "level": 2
+                        },
+                        {
+                            "id": 142,
+                            "name": "PHẦN 7: 시간과 계절 (THỜI GIAN VÀ MÙA)",
+                            "level": 2
+                        },
+                        {
+                            "id": 143,
+                            "name": "PHẦN 8: 감정과 느낌 (CẢM XÚC VÀ CẢM GIÁC)",
+                            "level": 3
+                        },
+                        {
+                            "id": 144,
+                            "name": "PHẦN 9: 교육 (GIÁO DỤC)",
+                            "level": 3
+                        },
+                        {
+                            "id": 145,
+                            "name": "PHẦN 10: 사회적인 상황들 (TÌNH HUỐNG XÃ HỘI)",
+                            "level": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "PHÁT ÂM TIẾNG HÀN",
+                    "lessons": [
+                        {
+                            "id": 146,
+                            "name": "Bài 1 - Giới thiệu về Hangeul (Nguyên âmㅏ,ㅓ,ㅗ và Phụ âm ㄱ,ㄴ,ㄷ) - Học thử",
+                            "level": 1
+                        },
+                        {
+                            "id": 147,
+                            "name": "Bài 2 - Nguyên âm ㅜ, ㅡ,ㅣ,ㅐ và Phụ âm ㄹ, ㅁ, ㅂ - Học thử",
+                            "level": 1
+                        },
+                        {
+                            "id": 148,
+                            "name": "Bài 3 - Nguyên âm ㅔ. ㅚ, ㅟ và Phụ âm ㅅ, ㅇ, ㅈ - Học thử",
+                            "level": 1
+                        },
+                        {
+                            "id": 149,
+                            "name": "Bài 4 - Nguyên âmㅑ,ㅕ, ㅛ, ㅠ và Phụ âm ㅊ, ㅋ, ㅌ, ㅍ, ㅎ - Học thử",
+                            "level": 1
+                        },
+                        {
+                            "id": 150,
+                            "name": "Bài 5 - Nguyên âm ㅒ, ㅖ, ㅘ và Phụ âm ㄲ, ㄸ, ㅃ - Học thử",
+                            "level": 1
+                        },
+                        {
+                            "id": 151,
+                            "name": "Bài 6 - Nguyên âm ㅙ, ㅞ, ㅝ, ㅢ và Phụ âm ㅆ, ㅉ",
+                            "level": 1
+                        },
+                        {
+                            "id": 152,
+                            "name": "Bài 7 - Ôn tập nguyên âm đơn và phụ âm thường",
+                            "level": 1
+                        },
+                        {
+                            "id": 153,
+                            "name": "Bài 8 - Ôn tập nguyên âm kép và phụ âm căng, phụ âm bật hơi",
+                            "level": 1
+                        },
+                        {
+                            "id": 154,
+                            "name": "Bài 9 - Cấu tạo chữ tiếng Hàn",
+                            "level": 2
+                        },
+                        {
+                            "id": 155,
+                            "name": "Bài 10 - Cách viết chữ tiếng Hàn",
+                            "level": 2
+                        },
+                        {
+                            "id": 156,
+                            "name": "Bài 11 - Quy tắc phát âm tiếng Hàn - Quy tắc âm cuối",
+                            "level": 3
+                        },
+                        {
+                            "id": 157,
+                            "name": "Bài 12 - Quy tắc phát âm tiếng Hàn - Quy tắc nối âm",
+                            "level": 3
+                        },
+                        {
+                            "id": 158,
+                            "name": "Bài 13 - Quy tắc phát âm tiếng Hàn - Đồng hóa phụ âm (Phần 1)",
+                            "level": 3
+                        },
+                        {
+                            "id": 159,
+                            "name": "Bài 14 - Quy tắc phát âm tiếng Hàn - Đồng hóa phụ âm (Phần 2)",
+                            "level": 3
+                        },
+                        {
+                            "id": 160,
+                            "name": "Bài 15 - Quy tắc phát âm tiếng Hàn - Âm bật hơi hóa và âm vòm hóa",
+                            "level": 3
+                        },
+                        {
+                            "id": 161,
+                            "name": "Bài 16 - Quy tắc phát âm tiếng Hàn - Âm căng hóa",
+                            "level": 3
+                        },
+                        {
+                            "id": 162,
+                            "name": "Bài 17 - Quy tắc phát âm tiếng Hàn - Quy tắc thêm từ",
+                            "level": 3
+                        },
+                        {
+                            "id": 163,
+                            "name": "Bài 18 - Ôn tập cách cấu tạo từ và quy tắc phát âm tiếng Hàn (Phần 1)",
+                            "level": 3
+                        },
+                        {
+                            "id": 164,
+                            "name": "Bài 19 - Ôn tập quy tắc phát âm tiếng Hàn (Phần 2)",
+                            "level": 3
+                        },
+                        {
+                            "id": 165,
+                            "name": "Bài 20 - Ôn tập quy tắc phát âm tiếng Hàn (Phần 3)",
+                            "level": 3
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
