@@ -213,6 +213,7 @@ class _LoginAndSighupFormState extends State<LoginForm> {
                                                 Vibration.vibrate(duration: 50);
                                               }
                                               print("click new manually");
+                                              await Future.delayed(Duration(milliseconds: 200));
                                               Navigator.pop(context);
                                               await Future.delayed(Duration(milliseconds: 300));
                                               Functions.showSignUpGeneralDialog(context);

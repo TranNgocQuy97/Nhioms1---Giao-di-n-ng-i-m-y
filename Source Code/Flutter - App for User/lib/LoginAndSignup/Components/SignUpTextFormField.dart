@@ -264,7 +264,7 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "Password again",
+                            "Password",
                             style: TextStyle(
                               color: Color.fromRGBO(150, 150, 150, 1),
                             ),

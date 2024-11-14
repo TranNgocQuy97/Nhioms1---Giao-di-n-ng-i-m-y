@@ -1,5 +1,4 @@
-
-import 'package:athena/HomePage/Components/RiveUtils.dart';
+import 'package:athena/HomePage/Components/HomepageContent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -275,6 +274,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                               )
                             ],
                           )),
+
                       Container(
                         height: 150,
                       )
@@ -302,13 +302,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         Container(
                           height: screenHeight,
                           width: screenWidth,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            image: DecorationImage(
-                              image: AssetImage("assets/backgrounds/wave.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          child: HomepageContent(isRoundedCorners: isPressedMenu,),
+                          // decoration: BoxDecoration(
+                          //   borderRadius: BorderRadius.circular(30),
+                          //   image: DecorationImage(
+                          //     image: AssetImage("assets/backgrounds/wave.png"),
+                          //     fit: BoxFit.cover,
+                          //   ),
+                          // ),
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -317,45 +318,75 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.symmetric(vertical: 35),
-                                  width: screenWidth * 0.752,
-                                  height: 50,
+                                  width: screenWidth,
+                                  height: 80,
                                   decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        spreadRadius: 1,
-                                        blurRadius: 3,
-                                        offset: Offset(1, 1),
-                                      ),
-                                    ],
                                     borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30),
+                                      topLeft: Radius.circular(20),
                                       topRight: Radius.circular(0),
                                       bottomLeft: Radius.circular(30),
                                       bottomRight: Radius.circular(0),
                                     ),
                                     color: Color.fromRGBO(255, 255, 255, 1),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  child: Stack(
                                     children: [
-                                      Container(
-                                        margin: EdgeInsets.symmetric(horizontal: 20),
-                                        child: Icon(
-                                          Icons.home,
-                                          size: 30,
-                                          color: backgroundColor,
-                                        ),
+                                      AnimatedPositioned(
+                                        top: 25,
+                                        left: isPressedMenu ? 15 : 80,
+                                        duration: Duration(milliseconds: 200),
+                                        child: Container(
+                                            height: 45,
+                                            width: 65,
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color.fromRGBO(200, 200, 200, 0.2),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 2,
+                                                  offset: Offset(0, 1),
+                                                ),
+                                              ],
+                                              borderRadius: BorderRadius.circular(20),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Icon(
+                                                Icons.home,
+                                                size: 30,
+                                                color: Color.fromRGBO(70, 92, 146, 1),
+                                              ),
+                                            ),
+                                          ),
                                       ),
 
-                                      Container(
-                                        margin: EdgeInsets.symmetric(horizontal: 10),
-                                        // color: Colors.lightBlue,
-                                        child: Icon(
-                                          Icons.doorbell,
-                                          size: 30,
-                                        ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Container(
+                                            margin:  EdgeInsets.only(top: 25),
+                                            height: 45,
+                                            width: 65,
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color.fromRGBO(200, 200, 200, 0.2),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 2,
+                                                  offset: Offset(0, 1),
+                                                ),
+                                              ],
+                                              borderRadius: BorderRadius.circular(20),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Icon(
+                                                Icons.doorbell,
+                                                size: 30,
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),
@@ -372,8 +403,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
 
             AnimatedPositioned(
-              top: isPressedMenu ? 75 : 38,
-              left: isPressedMenu ? 180 : 20,
+              top: isPressedMenu ? 75 : 25,
+              left: isPressedMenu ? 180 : 15,
               duration: Duration(milliseconds: 200),
                 child:GestureDetector(
                   onTap: (){
@@ -392,9 +423,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromRGBO(100, 100, 100, 1),
+                          color: Color.fromRGBO(200, 200, 200, 0.2),
                           spreadRadius: 1,
-                          blurRadius: 3,
+                          blurRadius: 2,
                           offset: Offset(0, 1),
                         ),
                       ],

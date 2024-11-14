@@ -148,7 +148,7 @@ class _LoginAndSignupState extends State<LoginAndSignup> with SingleTickerProvid
                                   children: [
                                     InkWell(
                                         onTap: () async {
-                                          await Future.delayed(Duration(milliseconds: 200));
+                                          await Future.delayed(Duration(milliseconds: 300));
                                           Functions.showLoginGeneralDialog(context);
                                           print('Start the course clicked!');
                                         },

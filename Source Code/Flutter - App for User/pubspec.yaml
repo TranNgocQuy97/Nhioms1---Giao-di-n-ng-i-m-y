@@ -67,6 +67,9 @@ flutter:
     - assets/riveassets/
     - assets/icons/
     - assets/backgrounds/
+    - assets/backgrounds/HomePage/
+    - assets/backgrounds/HomePage/English/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
