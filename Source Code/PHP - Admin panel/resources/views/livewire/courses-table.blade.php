@@ -1,7 +1,4 @@
-<x-filament::page>
-
-    <h2>COURSES FOR {{ $languageName }}</h2>
-
+<div>
     <table class="min-w-full bg-white">
         <thead>
             <tr>
@@ -14,7 +11,6 @@
                 <tr>
                     <td class="border px-4 py-2">{{ $course['name'] }}</td>
                     <td class="border px-4 py-2">
-                        <!-- Add buttons for edit, delete actions here -->
                         <button wire:click="editCourse('{{ $course['id'] }}')">Edit</button>
                         <button wire:click="deleteCourse('{{ $course['id'] }}')">Delete</button>
                     </td>
@@ -22,5 +18,4 @@
             @endforeach
         </tbody>
     </table>
-
-</x-filament::page>
+</div>
