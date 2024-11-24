@@ -1,7 +1,8 @@
 import 'package:athena/Classes/Functions.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpTextFormField extends StatefulWidget {
   const SignUpTextFormField({
@@ -17,9 +18,73 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
   final TextEditingController _phoneNumber_controller = TextEditingController();
   final TextEditingController _password_controller = TextEditingController();
   final TextEditingController _passwordAgain_controller = TextEditingController();
-
   bool _isPressedLogin = false;
   bool _isPressedSignUp = false;
+  // check pass và passagain
+  bool arePasswordsIdentical(String password1, String password2) {
+    return password1 == password2;
+  }
+
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
+
+  void testSaveToDatabase() async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users/test_user");
+    await ref.set({
+      "name": "Test User",
+      "email": "testuser@example.com",
+      "phoneNumber": "123456789",
+      "createdAt": DateTime.now().toIso8601String(),
+    }).then((_) {
+      print("Test data saved successfully!");
+    }).catchError((error) {
+      print("Failed to save test data: $error");
+    });
+  }
+
+  Future<String?> signUpWithEmailAndPass(String email, String pass, String name, String phoneNum) async {
+    try {
+      UserCredential credential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: pass,
+      );
+      User? user = credential.user;
+      if (user != null) {
+        await user.updateDisplayName(name);
+        await user.reload();
+        // Ghi thông tin vào Realtime Database
+        await _database.child("users/${user.uid}").set({
+          "uid": user.uid,
+          "email": email,
+          "name": name,
+          "phoneNumber": phoneNum,
+          "createdAt": DateTime.now().toIso8601String(),
+        }).then((_) {
+          print("User data saved to /users/${user.uid}");
+        }).catchError((error) {
+          print("Failed to save user data: $error");
+        });
+        return null;
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return 'Email đã được sử dụng bởi tài khoản khác.';
+      } else if (e.code == 'weak-password') {
+        return 'Mật khẩu quá yếu.';
+      } else if (e.code == 'invalid-email') {
+        return 'Email không hợp lệ.';
+      } else {
+        return 'Đã xảy ra lỗi: ${e.message}';
+      }
+    } catch (e) {
+      return 'Đã xảy ra lỗi không xác định: $e';
+    }
+    return 'Đăng ký không thành công. Vui lòng thử lại.';
+  }
+
+
+
 
   @override
   void dispose() {
@@ -432,6 +497,10 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                         });
                         print("Click login");
                       },
+
+                      // onTap: (){
+                      //   testSaveToDatabase();
+                      // },
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 50),
                         width: 100,
@@ -459,22 +528,48 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTapDown: (TapDownDetails details) async {
-                        if (await Vibration.hasVibrator() ?? false) {
-                          Vibration.vibrate(duration: 50);
-                        }
-                        setState(() {
-                          _isPressedSignUp = true;
-                        });
-                        await Future.delayed(Duration(milliseconds: 100));
 
-                        setState(() {
-                          _isPressedSignUp = false;
-                        });
-                        print("Click Sign Up");
+                    GestureDetector(
+                      onTap: () async {
+                        if (!arePasswordsIdentical(_password_controller.text, _passwordAgain_controller.text)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Passwords do not match')),
+                          );
+                          return;
+                        }
+
+                        // Hiển thị trạng thái đang xử lý
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => Center(child: CircularProgressIndicator()),
+                        );
+
+                        String? errorMessage = await signUpWithEmailAndPass(
+                          _email_controller.text.trim(),
+                          _password_controller.text.trim(),
+                          _name_controller.text.trim(),
+                          _phoneNumber_controller.text.trim(),
+                        );
+
+                        // Đóng hộp thoại đang xử lý
+                        Navigator.pop(context);
+
+                        if (errorMessage == null) {
+                          // Đăng ký thành công
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Sign up successful')),
+                          );
+                          Navigator.pushReplacementNamed(context, '/home');
+                        } else {
+                          // Hiển thị lỗi
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(errorMessage)),
+                          );
+                        }
                       },
                       child: AnimatedContainer(
+                        // UI của nút Sign Up
                         duration: Duration(milliseconds: 50),
                         width: 150,
                         height: 55,
@@ -493,7 +588,7 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                             Text(
                               "Sign Up",
                               style: TextStyle(
-                                fontSize: _isPressedSignUp ? 17 :18,
+                                fontSize: _isPressedSignUp ? 17 : 18,
                                 color: Colors.white,
                               ),
                             ),
@@ -501,6 +596,7 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                         ),
                       ),
                     ),
+
                   ],
                 )
               ],

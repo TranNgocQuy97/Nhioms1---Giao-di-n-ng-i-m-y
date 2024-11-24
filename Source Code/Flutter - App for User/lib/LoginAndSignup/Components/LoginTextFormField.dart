@@ -1,13 +1,18 @@
 import 'package:athena/Classes/Functions.dart';
+import 'package:athena/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../Classes/ShowNotification.dart';
 
 
 class LoginTextFormField extends StatefulWidget{
+
   const LoginTextFormField({
     Key ? key,
   }) : super(key:key);
+
   @override
   State<LoginTextFormField> createState() => _TextFormFieldLoginState();
 }
@@ -19,6 +24,28 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
 
   bool _isPressedLogin = false;
   bool _isObscured = true;
+
+
+
+
+
+  static Future<User?> loginUsingEmailPass(
+      {required String email,
+        required pass,
+        required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential =
+      await auth.signInWithEmailAndPassword(email: email, password: pass);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found for that email");
+      }
+    }
+    return user;
+  }
 
   void _toggleObscureText() {
     setState(() {
@@ -36,6 +63,7 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    ShowNotification showNo = ShowNotification();
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 250, 255, 0),
       resizeToAvoidBottomInset: false,
@@ -241,13 +269,18 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
                 setState(() {
                   _isPressedLogin = true;
                 });
-
                 await Future.delayed(Duration(milliseconds: 100));
-
                 setState(() {
                   _isPressedLogin = false;
                 });
                 print("Click login");
+                User? user = await loginUsingEmailPass(email: _email_controller.text, pass: _password_controller.text, context: context);
+                print(user);
+                if(user != null){
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+                }else{
+                  ShowNotification.showAnimatedSnackBar(context,"You have entered the wrong account or password.", "Errol");
+                }
               },
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 30),
@@ -289,7 +322,5 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
     );
   }
 }
-
-
 
 

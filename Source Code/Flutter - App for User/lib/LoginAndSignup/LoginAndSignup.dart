@@ -4,7 +4,9 @@ import 'package:athena/Classes/Functions.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+
 class LoginAndSignup extends StatefulWidget {
+  const LoginAndSignup({Key? key}) : super(key:key);
   @override
   State<LoginAndSignup> createState() => _LoginAndSignupState();
 }

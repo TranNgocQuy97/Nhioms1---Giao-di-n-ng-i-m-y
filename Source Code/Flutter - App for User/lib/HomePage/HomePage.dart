@@ -9,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+
   List<bool> isPressedMenuComponents = [true, false, false];
   List<String> iconsName = ["HOME", "USER", "LIKE/STAR"];
   List<String> MenuComponentsName = ["Home", "User", "Process"];

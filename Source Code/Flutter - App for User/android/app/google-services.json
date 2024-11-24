@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "916658255523",
+    "firebase_url": "https://linguamaster-a6aa3-default-rtdb.firebaseio.com",
+    "project_id": "linguamaster-a6aa3",
+    "storage_bucket": "linguamaster-a6aa3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916658255523:android:b813ed37c6cd906487b116",
+        "android_client_info": {
+          "package_name": "com.example.athena"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj9WDjSFap8GpU0Vj-BFVRxm_AnWcNR9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

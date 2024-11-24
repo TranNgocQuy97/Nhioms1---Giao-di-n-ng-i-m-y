@@ -1,4 +1,7 @@
+import 'package:athena/HomePage/Components/Chinese/ChineseContent.dart';
 import 'package:athena/HomePage/Components/English/EnglishContent.dart';
+import 'package:athena/HomePage/Components/Japanese/JapaneseContent.dart';
+import 'package:athena/HomePage/Components/Korean/KoreanContent.dart';
 import 'package:flutter/material.dart';
 
 class HomepageContent extends StatefulWidget {
@@ -131,6 +134,7 @@ class _HomepageContentState extends State<HomepageContent> {
                           fit: BoxFit.cover,
                         ) : null,
                       ),
+                      child: JapaneseContent(),
                     ),
                   ],
                 ),
@@ -148,14 +152,18 @@ class _HomepageContentState extends State<HomepageContent> {
                           fit: BoxFit.cover,
                         ) : null,
                       ),
+                      child: ChineseContent(),
                     ),
                   ],
                 ),
 
-                Column(
-                  children: [
-                  ],
-                ),
+
+                Container(
+                  height: screenHeight,
+                  width: screenWidth,
+                  child: KoreanContent(),
+                )
+
 
               ],
             ),

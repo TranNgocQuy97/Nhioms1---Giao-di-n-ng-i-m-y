@@ -38,10 +38,14 @@ dependencies:
   rive: ^0.13.15
   google_fonts: ^6.2.1
   vibration: ^2.0.1
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.3
+  firebase_database: ^11.1.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,6 +73,10 @@ flutter:
     - assets/backgrounds/
     - assets/backgrounds/HomePage/
     - assets/backgrounds/HomePage/English/
+    - assets/backgrounds/HomePage/Japan/
+    - assets/backgrounds/HomePage/Korean/
+    - assets/backgrounds/HomePage/China/
+    - assets/backgrounds/Notifications/
 
 
 

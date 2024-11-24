@@ -1,20 +1,49 @@
 import 'package:flutter/material.dart';
 
+import 'Components/SelectLesson.dart';
 
-class EnglishContent extends StatelessWidget{
 
+class EnglishContent extends StatefulWidget{
+
+  @override
+  State<EnglishContent> createState() => _EnglishContentState();
+}
+
+class _EnglishContentState extends State<EnglishContent> {
   BoxShadow EnglishBoxShadow = BoxShadow(color: Colors.black.withOpacity(0.1), spreadRadius: 1, blurRadius: 4, offset: Offset(1, 1),);
   Color ColorSchemeOfEnglish = Color.fromRGBO(20, 52, 106, 1);
+  int selectedValue = 0;
+
+  static void showLoginGeneralDialog(BuildContext context) {
+    showGeneralDialog(
+      barrierDismissible: true,
+      barrierLabel: "Login",
+      context: context,
+      transitionDuration: Duration(milliseconds: 200),
+      transitionBuilder: (_, animation, __, child) {
+        Tween<Offset> tween = Tween(begin: Offset(1, 0), end: Offset.zero);
+        return SlideTransition(
+          position: tween.animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+          ),
+          child: child,
+        );
+      },
+      pageBuilder: (context, _, __) => SelectLesson(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    List<String> icons = [""];
+    List<String> title = ["Teacher", "Game", "Lesson", "Exercise"];
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,14 +70,34 @@ class EnglishContent extends StatelessWidget{
                   ),
                 ],
               ),
-              Container(
-                width: 130,
-                height: 40,
-                decoration: BoxDecoration(
-                    boxShadow: [EnglishBoxShadow],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(17)),
-              )
+                Container(
+                  width: 130,
+                  height: 80,
+                  decoration: BoxDecoration(
+                      boxShadow: [EnglishBoxShadow],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(17)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 35,
+                          width: 35,
+                          child: Image.asset(
+                            "assets/icons/verify.png",
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            3, (index) => Icon(
+                              Icons.star_rounded,
+                            color: Color.fromRGBO(255, 227, 26, 1),
+                            ),
+                          )
+                        )
+                      ],
+                    )),
             ],
           ),
 
@@ -91,7 +140,6 @@ class EnglishContent extends StatelessWidget{
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               Container(
                 height: 260,
                 width: 170,
@@ -115,7 +163,7 @@ class EnglishContent extends StatelessWidget{
                           fit: BoxFit.cover,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -126,18 +174,36 @@ class EnglishContent extends StatelessWidget{
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: List.generate(
-                        4, (index) => Container(
-                      padding: EdgeInsets.all(10),
-                      height: 55,
-                      decoration: BoxDecoration(
-                          boxShadow: [EnglishBoxShadow],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-
-                      ),
-                    )
-                    )),
+                        4, (index) =>
+                        InkWell(
+                          onTap: (){
+                            showLoginGeneralDialog(context);
+                            print("Is press $index");
+                          },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                height: 55,
+                                decoration: BoxDecoration(
+                                    boxShadow: [EnglishBoxShadow],
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.abc,
+                                      ),
+                                      Text(
+                                        "132",
+                                        style: TextStyle(
+                                          fontSize: 5,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ))),
               ),
             ],
           ),
