@@ -8,9 +8,10 @@ class ChangePasswordTextFormField extends StatelessWidget{
   final TextEditingController _email_controller = TextEditingController();
   final TextEditingController _oldPassword_controller = TextEditingController();
   final TextEditingController _newPassword_controller = TextEditingController();
-  final TextEditingController _reNewPassword_controller = TextEditingController();
+  final TextEditingController _confirmNewPassword_controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 250, 255, 0),
       body: Form(
@@ -83,7 +84,6 @@ class ChangePasswordTextFormField extends StatelessWidget{
               ),
             ),
             SizedBox(height: 10,),
-
             Container(
               height: 80,
               child: Column(
@@ -136,7 +136,7 @@ class ChangePasswordTextFormField extends StatelessWidget{
                                 child: Container(
                                   width: 25,
                                   child: Image.asset(
-                                    "assets/icons/key.png",
+                                    "assets/icons/oldkey.png",
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -172,7 +172,7 @@ class ChangePasswordTextFormField extends StatelessWidget{
                     child: Stack(
                       children: [
                         TextFormField(
-                          controller: _oldPassword_controller,
+                          controller: _newPassword_controller,
                           decoration: InputDecoration(
                             prefixIcon: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -227,7 +227,7 @@ class ChangePasswordTextFormField extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "New Password",
+                        "Confirm New Password",
                         style: TextStyle(
                           color: Color.fromRGBO(150, 150, 150, 1),
                         ),
@@ -239,7 +239,7 @@ class ChangePasswordTextFormField extends StatelessWidget{
                     child: Stack(
                       children: [
                         TextFormField(
-                          controller: _oldPassword_controller,
+                          controller: _confirmNewPassword_controller,
                           decoration: InputDecoration(
                             prefixIcon: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -279,6 +279,82 @@ class ChangePasswordTextFormField extends StatelessWidget{
                           ],
                         )
                       ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTapDown: (TapDownDetails details) async {
+                      if (await Vibration.hasVibrator() ?? false) {
+                        Vibration.vibrate(duration: 50);
+                      }
+                      await Future.delayed(const Duration(milliseconds: 200));
+                      Navigator.pop(context);
+                      await Future.delayed(const Duration(milliseconds: 300));
+                      Functions.showLoginGeneralDialog(context);
+                      print("Click login");
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 50),
+                      width: 100,
+                      height: 55,
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(142, 172, 205, 1),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(10),
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTapDown: (TapDownDetails details) async {
+                      if (await Vibration.hasVibrator() ?? false) {
+                        Vibration.vibrate(duration: 50);
+                      }
+                      print("Click Send");
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 50),
+                      width: 150,
+                      height: 55,
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(74, 98, 138, 1),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(25),
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Change",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],

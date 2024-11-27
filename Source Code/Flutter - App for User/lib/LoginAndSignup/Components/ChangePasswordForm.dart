@@ -15,7 +15,7 @@ class ChangePasswordForm extends StatelessWidget{
           child: Stack(
             children: [
               Container(
-                height: 500,
+                height: 600,
                 width: screenWidth - 16*2,
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -51,7 +51,7 @@ class ChangePasswordForm extends StatelessWidget{
                           height: 20,
                         ),
                         Container(
-                          height: 260,
+                          height: 460,
                           child: ChangePasswordTextFormField(),
                         ),
                       ],

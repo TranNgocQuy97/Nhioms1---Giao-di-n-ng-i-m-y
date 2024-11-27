@@ -1,8 +1,11 @@
 import 'package:athena/Classes/Functions.dart';
+import 'package:athena/Classes/ShowNotification.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:validators/validators.dart';
 
 class SignUpTextFormField extends StatefulWidget {
   const SignUpTextFormField({
@@ -20,10 +23,38 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
   final TextEditingController _passwordAgain_controller = TextEditingController();
   bool _isPressedLogin = false;
   bool _isPressedSignUp = false;
+
   // check pass và passagain
   bool arePasswordsIdentical(String password1, String password2) {
     return password1 == password2;
   }
+  bool isPasswordStrong(String password) {
+    if (password.length < 6 || password.length > 16 ) return false;
+    bool hasUpperCase = password.contains(RegExp(r'[A-Z]'));
+    bool hasNumber = password.contains(RegExp(r'[0-9]'));
+    return hasUpperCase && hasNumber;
+  }
+
+  bool isValidEmail(String email) {
+    return isEmail(email);
+  }
+
+
+
+  int checkValidPhoneNumber(String phoneNumber) {
+    if (phoneNumber.length < 9 || phoneNumber.length > 11) {
+      return 911;
+    }
+    if (!RegExp(r'^(03|05|07|08|09)').hasMatch(phoneNumber)) {
+      return 305;
+    }
+    return 1;
+  }
+
+
+
+
+
 
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -53,7 +84,6 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
       if (user != null) {
         await user.updateDisplayName(name);
         await user.reload();
-        // Ghi thông tin vào Realtime Database
         await _database.child("users/${user.uid}").set({
           "uid": user.uid,
           "email": email,
@@ -69,6 +99,7 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
+        ShowNotification.showAnimatedSnackBar(context, "Email đã được sử dụng bởi tài khoản khác", 0);
         return 'Email đã được sử dụng bởi tài khoản khác.';
       } else if (e.code == 'weak-password') {
         return 'Mật khẩu quá yếu.';
@@ -144,6 +175,9 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                           children: [
                             TextFormField(
                               controller: _name_controller,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(25),
+                              ],
                               decoration: InputDecoration(
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -210,6 +244,9 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                           children: [
                             TextFormField(
                               controller: _email_controller,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(100),
+                              ],
                               decoration: InputDecoration(
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -276,6 +313,11 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                           children: [
                             TextFormField(
                               controller: _phoneNumber_controller,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(11),
+                              ],
                               decoration: InputDecoration(
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -506,7 +548,8 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                         width: 100,
                         height: 55,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(74, 98, 138, 1),
+                          color: Color.fromRGBO(142, 172, 205, 1) ,
+
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(25),
                             topRight: Radius.circular(10),
@@ -531,50 +574,54 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
 
                     GestureDetector(
                       onTap: () async {
+                        if(isValidEmail == false) {
+                          ShowNotification.showAnimatedSnackBar(context,"Invalid email \n", 0);
+                          return;
+                        }
                         if (!arePasswordsIdentical(_password_controller.text, _passwordAgain_controller.text)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Passwords do not match')),
-                          );
+                          ShowNotification.showAnimatedSnackBar(context,"Password and Password \n again are not the same.", 0);
+                          if(isPasswordStrong(_passwordAgain_controller.text)){
+                            ShowNotification.showAnimatedSnackBar(
+                                context,
+                                "Password required: \n"
+                                    "At least 1 uppercase character\n"
+                                    "At least 1 digit\n"
+                                    "6–16 characters",
+                                1
+                            );
+                            return;
+                          }
+                          return;
+                        }
+                        if(checkValidPhoneNumber(_phoneNumber_controller.text) != 1){
+                          if (checkValidPhoneNumber(_phoneNumber_controller.text) == 911) {
+                            ShowNotification.showAnimatedSnackBar(context, "Phone number: Minimum 9 numbers and maximum 11 numbers", 0);
+                            return;
+                          }
+                          if (checkValidPhoneNumber(_phoneNumber_controller.text) == 305) {
+                            ShowNotification.showAnimatedSnackBar(context, "Phone number must start \n with numbers: 03|05|07|08|09", 0);
+                            return;
+                          }
                           return;
                         }
 
-                        // Hiển thị trạng thái đang xử lý
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (_) => Center(child: CircularProgressIndicator()),
-                        );
-
-                        String? errorMessage = await signUpWithEmailAndPass(
+                        signUpWithEmailAndPass(
                           _email_controller.text.trim(),
                           _password_controller.text.trim(),
                           _name_controller.text.trim(),
                           _phoneNumber_controller.text.trim(),
                         );
-
-                        // Đóng hộp thoại đang xử lý
+                        ShowNotification.showAnimatedSnackBar(context, "Create account successfully", 3);
                         Navigator.pop(context);
 
-                        if (errorMessage == null) {
-                          // Đăng ký thành công
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Sign up successful')),
-                          );
-                          Navigator.pushReplacementNamed(context, '/home');
-                        } else {
-                          // Hiển thị lỗi
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(errorMessage)),
-                          );
-                        }
+
                       },
                       child: AnimatedContainer(
-                        // UI của nút Sign Up
                         duration: Duration(milliseconds: 50),
                         width: 150,
                         height: 55,
                         decoration: BoxDecoration(
-                          color: _isPressedSignUp ? Color.fromRGBO(142, 172, 205, 1) : Color.fromRGBO(152, 182, 215, 1),
+                          color: Color.fromRGBO(74, 98, 138, 1),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(25),

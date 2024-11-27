@@ -26,9 +26,6 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
   bool _isObscured = true;
 
 
-
-
-
   static Future<User?> loginUsingEmailPass(
       {required String email,
         required pass,
@@ -279,7 +276,17 @@ class _TextFormFieldLoginState extends State<LoginTextFormField> {
                 if(user != null){
                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
                 }else{
-                  ShowNotification.showAnimatedSnackBar(context,"You have entered the wrong account or password.", "Errol");
+                  // ShowNotification.showAnimatedSnackBar(context,"You have entered the wrong account or password.", 0);
+                  // ShowNotification.showAnimatedSnackBar(
+                  //     context,
+                  //     "Password required: \n"
+                  //         "At least 1 uppercase character\n"
+                  //         "At least 1 digit\n"
+                  //         "8–16 characters",
+                  //     1
+                  // );
+                  // ShowNotification.showAnimatedSnackBar(context,"Account created successfully. \n", 3);
+
                 }
               },
               child: AnimatedContainer(
