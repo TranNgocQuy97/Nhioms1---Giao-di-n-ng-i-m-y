@@ -67,7 +67,7 @@ class _RecoverPasswordTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(248, 250, 255, 1),
+      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
       body: Form(
         child: Column(

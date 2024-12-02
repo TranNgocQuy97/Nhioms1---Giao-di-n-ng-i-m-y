@@ -1,5 +1,7 @@
+import 'package:athena/HomePage/Components/FirebaseRealTimeDataBase/FirebaseRealTimeDataBase.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_database/firebase_database.dart';
+import 'Components/SelectExcercise.dart';
 import 'Components/SelectLesson.dart';
 
 
@@ -14,10 +16,10 @@ class _EnglishContentState extends State<EnglishContent> {
   Color ColorSchemeOfEnglish = Color.fromRGBO(20, 52, 106, 1);
   int selectedValue = 0;
 
-  static void showLoginGeneralDialog(BuildContext context) {
+  static void showClass(BuildContext context, List<String> courseNames) {
     showGeneralDialog(
       barrierDismissible: true,
-      barrierLabel: "Login",
+      barrierLabel: "showClass",
       context: context,
       transitionDuration: Duration(milliseconds: 200),
       transitionBuilder: (_, animation, __, child) {
@@ -29,16 +31,52 @@ class _EnglishContentState extends State<EnglishContent> {
           child: child,
         );
       },
-      pageBuilder: (context, _, __) => SelectLesson(),
+      pageBuilder: (context, _, __) => SelectLesson(courseNames:courseNames,),
     );
   }
+
+  static void showExercise(BuildContext context) {
+    showGeneralDialog(
+      barrierDismissible: true,
+      barrierLabel: "showExercise",
+      context: context,
+      transitionDuration: Duration(milliseconds: 200),
+      transitionBuilder: (_, animation, __, child) {
+        Tween<Offset> tween = Tween(begin: Offset(1, 0), end: Offset.zero);
+        return SlideTransition(
+          position: tween.animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+          ),
+          child: child,
+        );
+      },
+      pageBuilder: (context, _, __) => SelectExercise(),
+    );
+  }
+
+
+  List<String> courseNames = [];
+  void loadCourseNames() async {
+    List<String> names = await FireBaseRealTimeDataBase.fetchCourseNames('languages/0/courses');
+    setState(() {
+      courseNames = names;
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    loadCourseNames();
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    List<String> icons = [""];
-    List<String> title = ["Teacher", "Game", "Lesson", "Exercise"];
+    List<String> icons = ["assets/icons/video-lesson.png", "assets/icons/homework.png", "assets/icons/game.png", "assets/icons/mixed.png"];
+    List<String> title = [ "Lesson","Exercise", "Game", "Mixed" ];
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
@@ -177,11 +215,20 @@ class _EnglishContentState extends State<EnglishContent> {
                         4, (index) =>
                         InkWell(
                           onTap: (){
-                            showLoginGeneralDialog(context);
-                            print("Is press $index");
+                            // print(courseNames);
+                            setState(() {
+                              selectedValue = index;
+                            });
+                            if(selectedValue == 0){
+                              showClass(context, courseNames);
+                            }
+                            if(selectedValue==1) {
+                              showExercise(context);
+                            }
+
                           },
                               child: Container(
-                                padding: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(5),
                                 height: 55,
                                 decoration: BoxDecoration(
                                     boxShadow: [EnglishBoxShadow],
@@ -190,13 +237,18 @@ class _EnglishContentState extends State<EnglishContent> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      Icon(
-                                        Icons.abc,
+                                      Container(
+                                        height: 30,
+                                        width: 30,
+                                        child: Image.asset(
+                                            icons[index],
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                       Text(
-                                        "132",
+                                        title[index],
                                         style: TextStyle(
-                                          fontSize: 5,
+                                          fontSize: 8,
                                         ),
                                       ),
                                     ],

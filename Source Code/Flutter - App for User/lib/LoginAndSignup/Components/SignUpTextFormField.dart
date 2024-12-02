@@ -7,10 +7,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:validators/validators.dart';
 
+import '../FirebaseAuthenticationFunctions/FirebaseAuthenticationFunctions.dart';
+
 class SignUpTextFormField extends StatefulWidget {
   const SignUpTextFormField({
-    Key ? key,
-  }) : super(key:key);
+    super.key,
+  });
   @override
   State<SignUpTextFormField> createState() => _SignUpTextFormFieldState();
 }
@@ -25,21 +27,9 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
   bool _isPressedSignUp = false;
 
   // check pass và passagain
-  bool arePasswordsIdentical(String password1, String password2) {
-    return password1 == password2;
-  }
-  bool isPasswordStrong(String password) {
-    if (password.length < 6 || password.length > 16 ) return false;
-    bool hasUpperCase = password.contains(RegExp(r'[A-Z]'));
-    bool hasNumber = password.contains(RegExp(r'[0-9]'));
-    return hasUpperCase && hasNumber;
-  }
-
   bool isValidEmail(String email) {
     return isEmail(email);
   }
-
-
 
   int checkValidPhoneNumber(String phoneNumber) {
     if (phoneNumber.length < 9 || phoneNumber.length > 11) {
@@ -51,28 +41,8 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
     return 1;
   }
 
-
-
-
-
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
-
-  void testSaveToDatabase() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("users/test_user");
-    await ref.set({
-      "name": "Test User",
-      "email": "testuser@example.com",
-      "phoneNumber": "123456789",
-      "createdAt": DateTime.now().toIso8601String(),
-    }).then((_) {
-      print("Test data saved successfully!");
-    }).catchError((error) {
-      print("Failed to save test data: $error");
-    });
-  }
 
   Future<String?> signUpWithEmailAndPass(String email, String pass, String name, String phoneNum) async {
     try {
@@ -129,7 +99,6 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
 
 
   bool _isObscured = true;
-  @override
   void _toggleObscureText() {
     setState(() {
       _isObscured = !_isObscured;
@@ -578,9 +547,9 @@ class _SignUpTextFormFieldState extends State<SignUpTextFormField> {
                           ShowNotification.showAnimatedSnackBar(context,"Invalid email \n", 0);
                           return;
                         }
-                        if (!arePasswordsIdentical(_password_controller.text, _passwordAgain_controller.text)) {
+                        if (!FirebaseAuthenticationFunctions.arePasswordsIdentical(_password_controller.text, _passwordAgain_controller.text)) {
                           ShowNotification.showAnimatedSnackBar(context,"Password and Password \n again are not the same.", 0);
-                          if(isPasswordStrong(_passwordAgain_controller.text)){
+                          if(!FirebaseAuthenticationFunctions.isPasswordStrong(_password_controller.text)){
                             ShowNotification.showAnimatedSnackBar(
                                 context,
                                 "Password required: \n"

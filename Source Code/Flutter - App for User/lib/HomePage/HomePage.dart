@@ -1,4 +1,5 @@
 import 'package:athena/HomePage/Components/HomepageContent.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -266,11 +267,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  // Container(
-                                  //   height: 100,
-                                  //   width: 100,
-                                  //   color: Colors.green,
-                                  // )
+                                  IconButton(
+                                    icon: Icon(Icons.logout),
+                                    onPressed: () {
+                                      FirebaseAuth.instance.signOut().then((_) {
+                                        Navigator.pushReplacementNamed(context, '/login');
+                                      });
+                                    },
+                                  ),
                                 ],
                               )
                             ],

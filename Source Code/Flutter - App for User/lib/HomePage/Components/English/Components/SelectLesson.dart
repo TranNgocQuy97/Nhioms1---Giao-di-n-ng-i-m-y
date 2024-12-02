@@ -1,9 +1,35 @@
 import 'package:flutter/material.dart';
+import '../../FirebaseRealTimeDataBase/FirebaseRealTimeDataBase.dart';
 
 
 
-class SelectLesson extends StatelessWidget {
-  List<String> typeLess = ["ABC", "ABC", "READING", "SPEAKING", "GRAMMAR"];
+class SelectLesson extends StatefulWidget {
+  final List<String> courseNames;
+  const SelectLesson({super.key, required this.courseNames});
+  @override
+  State<SelectLesson> createState() => _SelectLessonState();
+}
+
+class _SelectLessonState extends State<SelectLesson> {
+
+  int? numCourse;
+  int? numLesson;
+  int isPressedCourse = 0;
+  List<String> lessonNames = [];
+  void loadCourseNames() async {
+    List<String> names = await FireBaseRealTimeDataBase.fetchCourseNames("languages/0/courses/$isPressedCourse/lessons");
+    setState(() {
+      lessonNames = names;
+      numLesson = lessonNames.length;
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    loadCourseNames();
+    numCourse = widget.courseNames.length;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -57,48 +83,53 @@ class SelectLesson extends StatelessWidget {
                 child: Container(
                     width: 500,
                     height: 40,
-                    color: Colors.blue,
+                    // color: Colors.blue,
                     child:
-                        ListView(scrollDirection: Axis.horizontal, children: [
-                      Stack(
-                        children: [
-                          Container(
-                            width: 500,
-                            height: 40,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-
-                              ],
-                            ),
-                          ),
+                        ListView(
+                            scrollDirection: Axis.horizontal, children: [
                           Row(
                               children: List.generate(
-                                  5,
-                                  (index) => GestureDetector(
-                                        onTap: () {
-                                          print(index);
-                                        },
-                                        child: Container(
-                                          width: 120,
-                                          height: 33,
-                                          color: Colors.yellow,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                typeLess[index],
-                                                style: TextStyle(
-                                                  fontSize: 18,
+                                  numCourse ?? 0,
+                                  (index) =>
+                                      GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              isPressedCourse = index;
+                                            });
+                                            print("is pressed ${widget.courseNames[index]}");
+                                            print(isPressedCourse);
+                                            print("$lessonNames $numLesson");
+                                            loadCourseNames();
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 10),
+                                            height: 33,
+                                            // color: Colors.yellow,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  widget.courseNames[index],
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    color: isPressedCourse == index ? Colors.black : Colors.grey,
+                                                  ),
                                                 ),
-                                              )
-                                            ],
+                                                Container(
+                                                  height: 2.5,
+                                                  width: 50,
+                                                  decoration:isPressedCourse == index ? BoxDecoration(
+                                                    color: Colors.redAccent,
+                                                    borderRadius:BorderRadius.circular(30),
+                                                  ) : null,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      )))
-                        ],
-                      )
+
+                              ))
                     ])),
               ),
               Container(
@@ -122,16 +153,18 @@ class SelectLesson extends StatelessWidget {
                       bottomRight: Radius.circular(0),
                     ),
                   ),
-                child:
-                ListView(
+                child: ListView(
                   padding: EdgeInsets.symmetric(vertical: 0),
-                  children: List.generate(4,
+                  children: List.generate(numLesson ?? 0,
                       (index) => Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                         height: 160,
                         decoration: BoxDecoration(
                           color: Colors.greenAccent,
                           borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Text(
+                          lessonNames[index],
                         ),
                       )
                   )
@@ -144,5 +177,4 @@ class SelectLesson extends StatelessWidget {
       )
     );
   }
-
 }

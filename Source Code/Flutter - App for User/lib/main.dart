@@ -1,5 +1,7 @@
+import 'package:athena/HomePage/HomePage.dart';
 import 'package:athena/LoginAndSignup/LoginAndSignup.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -15,37 +17,35 @@ class MyApp extends StatelessWidget {
       title: 'Firebase App',
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginAndSignup(), // Trang đăng ký
-        '/home': (context) => HomeLog(), // Trang Home
+        '/': (context) => CheckAuth(), // Trang kiểm tra trạng thái đăng nhập
+        '/login': (context) => LoginAndSignup(), // Trang đăng nhập
+        '/home': (context) => HomePage(), // Trang Home
       },
     );
   }
 }
 
-
-class HomeLog extends StatefulWidget {
-  const HomeLog({Key? key}) : super(key:key);
-  @override
-  State<HomeLog> createState() => _HomeLog();
-}
-
-class _HomeLog extends State<HomeLog> {
-
-  Future<FirebaseApp> _initializeFirebase() async{
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
-
+/// Kiểm tra trạng thái đăng nhập và điều hướng
+class CheckAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeFirebase(),
-      builder: (context, snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
-          return LoginAndSignup();
-        }
-        return const Center( child: CircularProgressIndicator(),);
-      } ,
+    User? user = FirebaseAuth.instance.currentUser;
+
+    // Kiểm tra nếu người dùng đã đăng nhập
+    if (user != null) {
+      Future.microtask(() {
+        Navigator.pushReplacementNamed(context, '/home');
+      });
+    } else {
+      Future.microtask(() {
+        Navigator.pushReplacementNamed(context, '/login');
+      });
+    }
+
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(), // Hiển thị trong lúc kiểm tra trạng thái đăng nhập
+      ),
     );
   }
 }

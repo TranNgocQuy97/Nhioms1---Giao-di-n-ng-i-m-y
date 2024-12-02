@@ -12,7 +12,7 @@ class RecoverPasswordForm extends StatelessWidget{
         child: Stack(
           children: [
             Container(
-              height: 400,
+              height: 300,
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               decoration: BoxDecoration(
@@ -39,7 +39,7 @@ class RecoverPasswordForm extends StatelessWidget{
                         height: 20,
                       ),
                       Container(
-                        height: 270,
+                        height: 190,
                         child: RecoverPasswordTextFormField(),
                       ),
                     ],
