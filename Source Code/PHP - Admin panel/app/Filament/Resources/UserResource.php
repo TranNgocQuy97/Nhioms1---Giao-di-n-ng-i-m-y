@@ -3,20 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = null; 
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
@@ -27,26 +23,19 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\TextInput::make('email')->email()->required(),
                 Forms\Components\FileUpload::make('image')->required(),
-                
+
                 Forms\Components\Select::make('role')
                     ->options([
                         'admin' => 'Admin',
                         'user' => 'User',
                     ])
-                    ->required()
-                    ->afterStateUpdated(function ($state, $set, $get) {
-                        $user = User::find($get('id')); 
-                        if ($user) {
-                            $user->role = $state;
-                            $user->save();
-                        }
-                    }),
-                
+                    ->required(),
+
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
                     ->visibleOn('create')
-                    ->dehydrateStateUsing(fn ($state) => bcrypt($state)),
+                    ->dehydrateStateUsing(fn($state) => bcrypt($state)),
             ]);
     }
 
@@ -71,25 +60,19 @@ class UserResource extends Resource
                         'secondary' => 'user',
                     ]),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->action(function ($record) {
+                        Firebase::database()->getReference("users/{$record['firebase_id']}")->remove();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-    
+
     public static function getPages(): array
     {
         return [
@@ -97,5 +80,13 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    public static function fetchUsersFromFirebase(): array
+    {
+        $users = Firebase::database()->getReference('users')->getValue();
+        return collect($users)->map(function ($user, $firebase_id) {
+            return array_merge($user, ['firebase_id' => $firebase_id]);
+        })->toArray();
+    }
 }

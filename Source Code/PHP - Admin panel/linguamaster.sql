@@ -24,16 +24,18 @@ CREATE TABLE courses (
 );
 
 INSERT INTO courses (`id`, `name`, `id_lang`) VALUES
-  (1, 'GIAO TIẾP TIẾNG ANH', 1),
-  (2, 'PHÁT ÂM TIẾNG ANH', 1),
-  (3, 'NGỮ PHÁP TIẾNG ANH', 1),
+  (1, 'COMMUNICATE', 1),
+  (2, 'PRONUNCIATION', 1),
+  (3, 'GRAMMAR', 1),
   (4, 'GIAO TIẾP TIẾNG TRUNG', 2),
   (5, 'PHÁT ÂM TIẾNG TRUNG', 2),
   (6, 'TỪ VỰNG TIẾNG TRUNG', 2),
   (7, 'GIAO TIẾP TIẾNG NHẬT', 3),
   (8, 'PHÁT ÂM TIẾNG NHẬT', 3),
   (9, 'GIAO TIẾP TIẾNG HÀN', 4),
-  (10, 'PHÁT ÂM TIẾNG HÀN', 4);
+  (10, 'PHÁT ÂM TIẾNG HÀN', 4),
+  (11, 'LISTENING', 1),
+  (12, 'READING', 1);
   
 CREATE TABLE lessons (
   id int not null AUTO_INCREMENT PRIMARY KEY,

@@ -3,17 +3,19 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 
 class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
 
-    protected function getActions(): array
+    protected function afterSave(): void
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        Firebase::database()->getReference("users/{$this->record['firebase_id']}")->update([
+            'name' => $this->record['name'],
+            'email' => $this->record['email'],
+            'role' => $this->record['role'],
+        ]);
     }
 }

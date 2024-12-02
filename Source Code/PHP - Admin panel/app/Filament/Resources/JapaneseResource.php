@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LanguageResource\Pages;
+use App\Filament\Resources\JapaneseResource\Pages;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -11,18 +11,21 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\Action;
 
-class LanguageResource extends Resource
+class JapaneseResource extends Resource
 {
     protected static ?string $model = null;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Languages';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+    protected static ?string $label = 'Japanese Courses';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label('Language Name')
+                    ->label('Course Name')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -37,12 +40,12 @@ class LanguageResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
-                    ->label('Language')
+                    ->label('Course')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('courses_count')
-                    ->label('Courses Total')
-                    ->getStateUsing(fn ($record) => count($record['courses'] ?? [])),
+            ])
+            ->filters([
+                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -53,14 +56,20 @@ class LanguageResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-
+    
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLanguages::route('/'),
-            'create' => Pages\CreateLanguage::route('/create'),
-            'edit' => Pages\EditLanguage::route('/{record}/edit'),
-            'view' => Pages\ListCourses::route('/{record}'),
+            'index' => Pages\ListJapaneses::route('/'),
+            'create' => Pages\CreateJapanese::route('/create'),
+            'edit' => Pages\EditJapanese::route('/{record}/edit'),
         ];
-    }
+    }    
 }

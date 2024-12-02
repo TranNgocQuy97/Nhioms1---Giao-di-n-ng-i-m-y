@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LanguageResource\Pages;
+use App\Filament\Resources\ChineseResource\Pages;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -10,19 +10,23 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\Action;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 
-class LanguageResource extends Resource
+class ChineseResource extends Resource
 {
-    protected static ?string $model = null;
+    protected static ?string $model = null;  
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Languages';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+    protected static ?string $label = 'Chinese Courses';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label('Language Name')
+                    ->label('Course Name')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -37,13 +41,11 @@ class LanguageResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
-                    ->label('Language')
+                    ->label('Course')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('courses_count')
-                    ->label('Courses Total')
-                    ->getStateUsing(fn ($record) => count($record['courses'] ?? [])),
             ])
+            ->filters([])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
@@ -57,10 +59,9 @@ class LanguageResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLanguages::route('/'),
-            'create' => Pages\CreateLanguage::route('/create'),
-            'edit' => Pages\EditLanguage::route('/{record}/edit'),
-            'view' => Pages\ListCourses::route('/{record}'),
+            'index' => Pages\ListChineses::route('/'),
+            'create' => Pages\CreateChinese::route('/create'),
+            'edit' => Pages\EditChinese::route('/{record}/edit'),
         ];
     }
 }

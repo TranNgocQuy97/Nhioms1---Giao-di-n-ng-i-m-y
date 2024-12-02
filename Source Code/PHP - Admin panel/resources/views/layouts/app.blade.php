@@ -12,7 +12,6 @@
         <style>[x-cloak] { display: none !important; }</style>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
-        @livewireScripts
         @stack('scripts')
     </head>
  
@@ -20,5 +19,7 @@
         {{ $slot }}
  
         @livewire('notifications')
+        @livewireScripts
+
     </body>
 </html>
