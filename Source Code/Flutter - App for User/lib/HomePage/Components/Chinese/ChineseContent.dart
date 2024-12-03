@@ -21,7 +21,11 @@ class ChineseContent extends StatelessWidget{
                       color: Colors.blue,
                     ),
                     child: Image.asset(
+<<<<<<< HEAD
                       'assets/backgrounds/HomePage/China/China.jpg',
+=======
+                      'assets/backgrounds/HomePage/English/English.jpg',
+>>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 class KoreanContent extends StatefulWidget {
   @override
   State<KoreanContent> createState() => _KoreanContentState();
@@ -175,3 +176,16 @@ class _MainContentWidget extends StatelessWidget {
   }
 }
 
+=======
+class KoreanContent extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        height: 100,
+      )
+    );
+  }
+}
+>>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
