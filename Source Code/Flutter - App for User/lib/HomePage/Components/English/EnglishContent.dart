@@ -1,6 +1,5 @@
 import 'package:athena/HomePage/Components/FirebaseRealTimeDataBase/FirebaseRealTimeDataBase.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'Components/SelectExcercise.dart';
 import 'Components/SelectLesson.dart';
 
@@ -57,7 +56,7 @@ class _EnglishContentState extends State<EnglishContent> {
 
   List<String> courseNames = [];
   void loadCourseNames() async {
-    List<String> names = await FireBaseRealTimeDataBase.fetchCourseNames('languages/0/courses');
+    List<String> names = await FireBaseRealTimeDataBase.fetchCourse('languages/0/courses', "name");
     setState(() {
       courseNames = names;
     });

@@ -43,7 +43,8 @@ dependencies:
   firebase_database: ^11.1.6
   flutter_svg: ^2.0.0
   validators: ^3.0.0
-
+  video_player: ^2.9.2
+  youtube_player_flutter: ^9.1.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     # To add assets to your application, add an assets section, like this:
   assets:
     - assets/videos/
+    - assets/gifs/
     - assets/riveassets/
     - assets/icons/
     - assets/backgrounds/

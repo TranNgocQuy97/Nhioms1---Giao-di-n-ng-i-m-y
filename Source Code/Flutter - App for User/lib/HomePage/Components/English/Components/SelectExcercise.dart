@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 
 
 
@@ -18,6 +18,17 @@ class _SelectExerciseState extends State<SelectExercise> {
   double border2 = 30;
   double border3 = 10;
   double border4 = 30;
+  List questions = [];
+  @override
+  void initState() {
+    super.initState();
+    fetchQuestions().then((List<Question> loadedQuestions) {
+      setState(() {
+        questions = loadedQuestions;
+      });
+    });
+  }
+
 
 
 
@@ -160,10 +171,10 @@ class _SelectExerciseState extends State<SelectExercise> {
                                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                                 width: 160,
                                 decoration: BoxDecoration(
-                                  color:  (iCol == 0 && iRow == 0) ?  Colors.orange
-                                          : ( iCol ==0 && iRow == 1 ? Colors.blue
-                                          : (iCol == 1 && iRow ==0) ? Colors.yellow
-                                          :                           Colors.redAccent),
+                                  color:  (iCol == 0 && iRow == 0) ?  Color.fromRGBO(168, 205, 137, 1)
+                                          : ( iCol ==0 && iRow == 1 ? Color.fromRGBO(198, 231, 255, 1)
+                                          : (iCol == 1 && iRow ==0) ? Color.fromRGBO(249, 192, 171, 1)
+                                          :                           Color.fromRGBO(251, 251, 251, 1)),
                                   borderRadius: BorderRadius.only(
                                     topLeft:(iCol == 0 && iRow == 0) ? Radius.circular(border1): ( iCol ==0 && iRow == 1 ? Radius.circular(border2) : (iCol == 1 && iRow ==0) ? Radius.circular(border4) : Radius.circular(border3) ),
                                     topRight: (iCol == 0 && iRow == 0) ? Radius.circular(border2): ( iCol ==0 && iRow == 1 ? Radius.circular(border1) : (iCol == 1 && iRow ==0) ? Radius.circular(border3) : Radius.circular(border2) ),
@@ -172,7 +183,7 @@ class _SelectExerciseState extends State<SelectExercise> {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey.withOpacity(0.4),
+                                      color: Colors.black.withOpacity(0.4),
                                       spreadRadius: 1,
                                       blurRadius: 3,
                                       offset: Offset(2, 2),
@@ -205,4 +216,44 @@ class _SelectExerciseState extends State<SelectExercise> {
       )
     );
   }
+}
+
+
+
+
+class Question {
+  String audioUrl;
+  String correctAnswer;
+  int id;
+  List<String> options;
+  String question;
+
+  Question(this.audioUrl, this.correctAnswer, this.id, this.options, this.question);
+
+  factory Question.fromSnapshot(DataSnapshot snapshot) {
+    var audioUrl = snapshot.child('audio_url').value as String?;
+    var correctAnswer = snapshot.child('correct_answer').value as String?;
+    var id = int.tryParse(snapshot.key ?? '0') ?? 0;
+    var optionsSnapshot = snapshot.child('options').value as List<dynamic>?;
+    var questionText = snapshot.child('question').value as String?;
+    List<String> options = optionsSnapshot?.map((e) => e.toString()).toList() ?? [];
+    return Question(
+      audioUrl ?? '',
+      correctAnswer ?? '',
+      id,
+      options,
+      questionText ?? '',
+    );
+  }
+
+}
+
+Future<List<Question>> fetchQuestions() async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref('languages/0/courses/0/lessons/0/exercises/5/questions');
+  DataSnapshot snapshot = await ref.get();
+  List<Question> questions = [];
+  for (var child in snapshot.children) {
+    questions.add(Question.fromSnapshot(child));
+  }
+  return questions;
 }
