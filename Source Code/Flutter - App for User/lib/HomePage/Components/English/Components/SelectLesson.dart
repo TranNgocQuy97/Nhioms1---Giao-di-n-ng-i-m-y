@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 import 'package:athena/HomePage/Components/English/Components/StartLesson.dart';
 import 'package:flutter/material.dart';
@@ -17,35 +18,52 @@ class _SelectLessonState extends State<SelectLesson> {
   List<Color> darkColorList = [Colors.black, Colors.white];
   int? numCourse;
   int? numLesson;
+  int isPressedLesson = 0;
   int isPressedCourse = 0;
   List<String> lessonNames = [];
   List<int> lessonLevel = [];
+  List<Color> randomColors = [];
   List<Color> lessonCor = [
     Color.fromRGBO(242, 249, 255, 1),
     Color.fromRGBO(255, 245, 215, 1),
     Color.fromRGBO(255, 200, 100, 1),
     Color.fromRGBO(168, 136, 181, 1),
-    Color.fromRGBO(242, 249, 255, 1),
     Color.fromRGBO(251, 251, 251, 1),
     Color.fromRGBO(154, 191, 128, 1),
     Color.fromRGBO(168, 136, 181, 1),
     Color.fromRGBO(172, 188, 255, 1),
   ];
+  List<String> randomBack = [];
+  List<String> backLess = [
+    "assets/backgrounds/HomePage/English/1.png",
+    "assets/backgrounds/HomePage/English/2.png",
+    "assets/backgrounds/HomePage/English/3.png",
+    "assets/backgrounds/HomePage/English/4.png",
+    "assets/backgrounds/HomePage/English/5.png",
+    "assets/backgrounds/HomePage/English/6.png",
+    "assets/backgrounds/HomePage/English/7.png",
+    "assets/backgrounds/HomePage/English/8.png",
+  ];
   void loadCourseNames() async {
-    List<String> names = await FireBaseRealTimeDataBase.fetchCourse("languages/0/courses/$isPressedCourse/lessons/", "name");
-    List<int> levels = await FireBaseRealTimeDataBase.getList("languages/0/courses/$isPressedCourse/lessons/", "level");
+    List<String> names = await FireBaseRealTimeDataBase.fetchCourse(
+        "languages/0/courses/$isPressedCourse/lessons/", "name");
+    List<int> levels = await FireBaseRealTimeDataBase.getList(
+        "languages/0/courses/$isPressedCourse/lessons/", "level");
     setState(() {
       lessonNames = names;
       lessonLevel = levels;
       numLesson = lessonNames.length;
+      randomColors = List.generate(numLesson ?? 0, (_) => getRandomLessonColor(lessonCor));
+      randomBack = List.generate(numLesson ?? 0, (_) => getRandomLessonBackground(backLess));
     });
   }
-  static void showCourse(BuildContext context, int isPressedCourse) {
+
+  static void showCourse(BuildContext context, int isPressedCourse, int isPressedLessons ) {
     showGeneralDialog(
       barrierDismissible: true,
       barrierLabel: "showClass",
       context: context,
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: Duration(milliseconds: 350),
       transitionBuilder: (_, animation, __, child) {
         Tween<Offset> tween = Tween(begin: Offset(-1, 0), end: Offset.zero);
         return SlideTransition(
@@ -55,11 +73,19 @@ class _SelectLessonState extends State<SelectLesson> {
           child: child,
         );
       },
-      pageBuilder: (context, _, __) => StartCourse(isPressedCourse:123),
+      pageBuilder: (context, _, __) =>StartLesson(isPressedCourse: isPressedCourse, isPressedLessons: isPressedLessons),
     );
   }
 
+  Color getRandomLessonColor(List<Color> colorList) {
+    Random random = Random();
+    return colorList[random.nextInt(colorList.length)];
+  }
 
+  String getRandomLessonBackground(List<String> backLess) {
+    Random random = Random();
+    return backLess[random.nextInt(backLess.length)];
+  }
 
   @override
   void initState() {
@@ -113,7 +139,6 @@ class _SelectLessonState extends State<SelectLesson> {
                 ),
               ],
             ),
-
             Text(
                 "Choose",
               style: TextStyle(
@@ -198,9 +223,9 @@ class _SelectLessonState extends State<SelectLesson> {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.4),
+                      color: Colors.grey.withOpacity(0.6),
                       spreadRadius: 1,
-                      blurRadius: 3,
+                      blurRadius: 5,
                       offset: Offset(2, 2),
                     ),
                   ],
@@ -223,9 +248,9 @@ class _SelectLessonState extends State<SelectLesson> {
                         child: GestureDetector(
                           onTap: (){
                             setState(() {
-
+                              isPressedLesson = index;
                             });
-                            showCourse(context,isPressedCourse);
+                            showCourse(context,isPressedCourse, isPressedLesson);
                           },
                           child: Container(
                             constraints: BoxConstraints(
@@ -236,10 +261,10 @@ class _SelectLessonState extends State<SelectLesson> {
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color.fromRGBO(200, 200, 200, 0.4),
+                                  color: Color.fromRGBO(0, 0, 0, 0.3),
                                   spreadRadius: 1,
                                   blurRadius: 2,
-                                  offset: Offset(0, 1),
+                                  offset: Offset(2, 2),
                                 ),
                               ],
                             ),
@@ -252,7 +277,7 @@ class _SelectLessonState extends State<SelectLesson> {
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: lessonCor[index%lessonCor.length ],
+                                    color: randomColors[index],
                                   ),
                                 ),
                                 Container(
@@ -262,7 +287,7 @@ class _SelectLessonState extends State<SelectLesson> {
                                   child:  ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
                                     child: Image.asset(
-                                      "assets/backgrounds/HomePage/English/${index%8 + 1}.png",
+                                      randomBack[index],
                                       fit: BoxFit.cover,
                                     ),
                                   ),

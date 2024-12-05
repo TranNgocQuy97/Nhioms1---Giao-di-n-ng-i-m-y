@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:athena/HomePage/Components/Leaderboard.dart';
+import 'package:athena/HomePage/Components/ExerciseHistory.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -273,6 +275,24 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                       FirebaseAuth.instance.signOut().then((_) {
                                         Navigator.pushReplacementNamed(context, '/login');
                                       });
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.leaderboard),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Leaderboard()),
+                                      );
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.history),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => ExerciseHistory()),
+                                      );
                                     },
                                   ),
                                 ],

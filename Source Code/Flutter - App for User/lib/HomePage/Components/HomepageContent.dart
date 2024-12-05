@@ -1,14 +1,12 @@
-import 'package:athena/HomePage/Components/Chinese/ChineseContent.dart';
 import 'package:athena/HomePage/Components/English/EnglishContent.dart';
-import 'package:athena/HomePage/Components/Japanese/JapaneseContent.dart';
 import 'package:athena/HomePage/Components/Korean/KoreanContent.dart';
+import 'package:athena/HomePage/Components/Chinese/ChineseContent.dart';
+import 'package:athena/HomePage/Components/Japanese/JapaneseContent.dart';
 import 'package:flutter/material.dart';
 
 class HomepageContent extends StatefulWidget {
   final bool isRoundedCorners;
-  // Constructor yêu cầu biến bool đầu vào
   HomepageContent({required this.isRoundedCorners});
-
   @override
   State<HomepageContent> createState() => _HomepageContentState();
 }
@@ -156,15 +154,11 @@ class _HomepageContentState extends State<HomepageContent> {
                     ),
                   ],
                 ),
-
-
                 Container(
                   height: screenHeight,
                   width: screenWidth,
                   child: KoreanContent(),
                 )
-
-
               ],
             ),
           ),

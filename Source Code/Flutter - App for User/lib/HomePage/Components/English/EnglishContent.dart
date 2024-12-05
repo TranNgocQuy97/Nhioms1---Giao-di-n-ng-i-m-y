@@ -39,7 +39,7 @@ class _EnglishContentState extends State<EnglishContent> {
       barrierDismissible: true,
       barrierLabel: "showExercise",
       context: context,
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: Duration(milliseconds: 400),
       transitionBuilder: (_, animation, __, child) {
         Tween<Offset> tween = Tween(begin: Offset(1, 0), end: Offset.zero);
         return SlideTransition(
@@ -107,34 +107,34 @@ class _EnglishContentState extends State<EnglishContent> {
                   ),
                 ],
               ),
-                Container(
+              Container(
                   width: 130,
                   height: 80,
                   decoration: BoxDecoration(
                       boxShadow: [EnglishBoxShadow],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(17)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 35,
-                          width: 35,
-                          child: Image.asset(
-                            "assets/icons/verify.png",
-                          ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 35,
+                        width: 35,
+                        child: Image.asset(
+                          "assets/icons/verify.png",
                         ),
-                        Row(
+                      ),
+                      Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
                             3, (index) => Icon(
-                              Icons.star_rounded,
+                            Icons.star_rounded,
                             color: Color.fromRGBO(255, 227, 26, 1),
-                            ),
+                          ),
                           )
-                        )
-                      ],
-                    )),
+                      )
+                    ],
+                  )),
             ],
           ),
 
@@ -143,8 +143,8 @@ class _EnglishContentState extends State<EnglishContent> {
             width: screenWidth,
             height: 45,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20)
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20)
             ),
             child: Stack(
               children: [
@@ -161,9 +161,9 @@ class _EnglishContentState extends State<EnglishContent> {
                         child: Text(
                           "Search",
                           style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
                           ),
                         ),
                       ),
@@ -181,9 +181,9 @@ class _EnglishContentState extends State<EnglishContent> {
                 height: 260,
                 width: 170,
                 decoration: BoxDecoration(
-                  boxShadow: [EnglishBoxShadow],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30)
+                    boxShadow: [EnglishBoxShadow],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30)
                 ),
                 child: Stack(
                   children: [
@@ -226,35 +226,35 @@ class _EnglishContentState extends State<EnglishContent> {
                             }
 
                           },
-                              child: Container(
-                                padding: EdgeInsets.all(5),
-                                height: 55,
-                                decoration: BoxDecoration(
-                                    boxShadow: [EnglishBoxShadow],
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 30,
-                                        width: 30,
-                                        child: Image.asset(
-                                            icons[index],
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Text(
-                                        title[index],
-                                        style: TextStyle(
-                                          fontSize: 8,
-                                        ),
-                                      ),
-                                    ],
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 55,
+                            decoration: BoxDecoration(
+                                boxShadow: [EnglishBoxShadow],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    child: Image.asset(
+                                      icons[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
+                                  Text(
+                                    title[index],
+                                    style: TextStyle(
+                                      fontSize: 8,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ))),
+                            ),
+                          ),
+                        ))),
               ),
             ],
           ),
@@ -264,15 +264,15 @@ class _EnglishContentState extends State<EnglishContent> {
           ),
 
           Container(
-            margin: EdgeInsets.only(bottom: 25),
-            height: 87,
-            child: Center(
-              child: Image.asset(
+              margin: EdgeInsets.only(bottom: 25),
+              height: 87,
+              child: Center(
+                child: Image.asset(
                   'assets/icons/up-arrow.png',
                   width: 87,
                   height: 87,
-              ),
-            )
+                ),
+              )
           ),
 
         ],

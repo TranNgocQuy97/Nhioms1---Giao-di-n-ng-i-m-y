@@ -1,9 +1,8 @@
 import 'dart:ui';
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
-import '../FirebaseRealTimeDataBase/FirebaseRealTimeDataBase.dart';
 import 'Components/SelectExercise.dart';
 import 'Components/SelectLesson.dart';
+import 'package:athena/HomePage/Components/FirebaseRealTimeDataBase/FirebaseRealTimeDataBase.dart';
 
 class JapaneseContent extends StatefulWidget {
   @override
@@ -60,9 +59,11 @@ class _JapaneseContentState extends State<JapaneseContent> {
 
   void loadCourseNames() async {
     List<String> names = await FireBaseRealTimeDataBase.fetchCourseNames('languages/2/courses');
-    setState(() {
-      courseNames = names;
-    });
+    if (mounted) {
+      setState(() {
+        courseNames = names;
+      });
+    }
   }
 
   @override
@@ -71,15 +72,6 @@ class _JapaneseContentState extends State<JapaneseContent> {
     loadCourseNames();
   }
 
-=======
-
-import 'package:flutter/material.dart';
-
-
-class JapaneseContent extends StatelessWidget{
-  BoxShadow JapaneseBoxShadow = BoxShadow(color: Colors.black.withOpacity(0.5), spreadRadius: 1, blurRadius: 4, offset: Offset(1, 1),);
-  Color ColorSchemeOfJapanese = Color.fromRGBO(20, 52, 106, 1);
->>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -93,11 +85,7 @@ class JapaneseContent extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-<<<<<<< HEAD
                 margin: EdgeInsets.only(top: 90, left: 15),
-=======
-                margin: EdgeInsets.only(top: 90,left: 15),
->>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -123,7 +111,6 @@ class JapaneseContent extends StatelessWidget{
                   ],
                 ),
               ),
-<<<<<<< HEAD
               Container(
                 margin: EdgeInsets.only(top: 15, left: 15, right: 15),
                 height: 180,
@@ -176,58 +163,13 @@ class JapaneseContent extends StatelessWidget{
                         ),
                       ),
                     ),
-=======
-                Container(
-                  margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-                  height: 180,
-                  width: screenWidth,
-                  decoration: BoxDecoration(
-                    boxShadow: [JapaneseBoxShadow],
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30), // Bo góc cho hình ảnh
-                    child: Image.asset(
-                      "assets/backgrounds/HomePage/Japan/Japan.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              Container(
-                height: 190,
-                margin: EdgeInsets.symmetric(horizontal: 25,vertical: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(
-                    2, (indexC) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(
-                      3, (indexR) => Container(
-                      height: 80,
-                      width: 80,
-                      decoration:BoxDecoration(
-                        boxShadow: (indexR == 2 && indexC == 1) ? null : [JapaneseBoxShadow],
-                        color: (indexR == 2 && indexC == 1) ? null : Colors.white,
-                        borderRadius:  BorderRadius.circular(18)
-                      ),
-                    )
-                    ),
-                  )
->>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
                   ),
                 ),
               ),
             ],
           ),
         ],
-<<<<<<< HEAD
       ),
     );
   }
-=======
-      )
-    );
-  }
-
->>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
 }

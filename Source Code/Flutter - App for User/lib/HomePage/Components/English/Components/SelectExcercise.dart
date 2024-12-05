@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-
-
 
 class SelectExercise extends StatefulWidget {
   const SelectExercise({super.key});
@@ -12,25 +12,198 @@ class SelectExercise extends StatefulWidget {
 
 class _SelectExerciseState extends State<SelectExercise> {
   Color topColor = Colors.white;
-  Color bottomColor = Color.fromRGBO(28, 50, 91, 1);
+  Color bottomColor = const Color.fromRGBO(28, 50, 91, 1);
   double share = 0.75;
   double border1 = 80;
   double border2 = 30;
   double border3 = 10;
   double border4 = 30;
-  List questions = [];
+  String selectedAnswer = '';
+  int currentQuestionIndex = 0;
+  int score = 0;
+
+  final List<Map<String, dynamic>> questions = [
+    {
+      'question': "Why is Paris considered one of the most popular tourist destinations in the world?",
+      'answers': [
+        "A. Paris is famous for its rich history, iconic landmarks like the Eiffel Tower, and cultural attractions such as the Louvre Museum, which houses the Mona Lisa.",
+        "B. It is known for its culinary excellence, offering a wide variety of French dishes and desserts that attract food enthusiasts from around the globe.",
+        "C. Paris is often referred to as the City of Love, attracting couples for romantic experiences, including cruises along the Seine River",
+        "D. All of the above."
+      ],
+      'correctAnswer': 'D'
+    },
+    {
+      'question': "What is the capital of Japan?",
+      'answers': [
+        "A. Beijing",
+        "B. Seoul",
+        "C. Tokyo",
+        "D. Bangkok"
+      ],
+      'correctAnswer': 'C'
+    },
+    {
+      'question': "Which planet is known as the Red Planet?",
+      'answers': [
+        "A. Earth",
+        "B. Mars",
+        "C. Jupiter",
+        "D. Venus"
+      ],
+      'correctAnswer': 'B'
+    },
+    {
+      'question': "What is the largest ocean on Earth?",
+      'answers': [
+        "A. Atlantic Ocean",
+        "B. Indian Ocean",
+        "C. Arctic Ocean",
+        "D. Pacific Ocean"
+      ],
+      'correctAnswer': 'D'
+    }
+  ];
+
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
+
   @override
   void initState() {
     super.initState();
-    fetchQuestions().then((List<Question> loadedQuestions) {
-      setState(() {
-        questions = loadedQuestions;
-      });
+    Firebase.initializeApp().then((_) {
+      print('Firebase initialized');
+    }).catchError((error) {
+      print('Firebase initialization error: $error');
     });
   }
 
+  void _selectAnswer(String answer) {
+    setState(() {
+      selectedAnswer = answer;
+    });
 
+    if (answer == questions[currentQuestionIndex]['correctAnswer']) {
+      score++;
+      _showCongratulatoryDialog();
+    } else {
+      score--;
+      _showIncorrectDialog();
+    }
 
+    _pushExerciseDataToFirebase();
+  }
+
+  void _pushExerciseDataToFirebase() {
+    String userId = "WcoW2RK73XPim6CpIjqXs7cVy5Z2"; // Thay thế bằng ID người dùng thực tế
+    String language = "ENGLISH";
+    String timestamp = DateTime.now().toIso8601String();
+
+    _database.child('users/$userId/courseStart').set({
+      'exerciseId': currentQuestionIndex,
+      'language': language,
+      'timestamp': timestamp,
+    }).then((_) {
+      print('Dữ liệu đã được đẩy lên Firebase thành công.');
+    }).catchError((error) {
+      print('Có lỗi xảy ra: $error');
+    });
+  }
+
+  void _showCongratulatoryDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Chúc mừng!'),
+          content: Text('Bạn đã chọn đúng. Điểm của bạn là $score.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _nextQuestion();
+              },
+              child: const Text('Câu hỏi tiếp theo'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showIncorrectDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Sai rồi!'),
+          content: Text('Bạn đã chọn sai. Điểm của bạn là $score.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _nextQuestion();
+              },
+              child: const Text('Câu hỏi tiếp theo'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showFinalScoreDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              const Icon(Icons.celebration, color: Colors.orange),
+              const SizedBox(width: 10),
+              const Text('Chúc mừng!'),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Lottie.asset(
+                'assets/icons/jumping_dog.json',
+                width: 150,
+                height: 150,
+                fit: BoxFit.fill,
+              ),
+              const SizedBox(height: 20),
+              Text('Bạn đã hoàn thành tất cả các câu hỏi. Tổng điểm của bạn là $score.'),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  currentQuestionIndex = 0;
+                  score = 0;
+                  selectedAnswer = '';
+                });
+              },
+              child: const Text('Bắt đầu lại'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _nextQuestion() {
+    setState(() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        selectedAnswer = '';
+      } else {
+        _showFinalScoreDialog();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +220,12 @@ class _SelectExerciseState extends State<SelectExercise> {
               children: [
                 Container(
                   height: screenHeight,
-                  width: screenWidth*0.5,
+                  width: screenWidth * 0.5,
                   color: topColor,
                 ),
                 Container(
                   height: screenHeight,
-                  width: screenWidth*0.5,
+                  width: screenWidth * 0.5,
                   color: bottomColor,
                 ),
               ],
@@ -61,12 +234,12 @@ class _SelectExerciseState extends State<SelectExercise> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(15, 30, 15, 15),
-                  height: screenHeight*share,
+                  padding: const EdgeInsets.fromLTRB(15, 30, 15, 15),
+                  height: screenHeight * share,
                   width: screenWidth,
                   decoration: BoxDecoration(
-                      color: topColor,
-                    borderRadius: BorderRadius.only(
+                    color: topColor,
+                    borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(80),
                     ),
                   ),
@@ -75,13 +248,13 @@ class _SelectExerciseState extends State<SelectExercise> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       IconButton(
-                          onPressed: (){
-                            Navigator.pop(context);
-                            },
-                          icon: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 26,
-                          )
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 26,
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -90,170 +263,187 @@ class _SelectExerciseState extends State<SelectExercise> {
                             height: 200,
                             width: 330,
                             decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.6),
-                                    spreadRadius: 1,
-                                    blurRadius: 8,
-                                    offset: Offset(2, 2),
-                                  ),
-                                ],
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.6),
+                                  spreadRadius: 1,
+                                  blurRadius: 8,
+                                  offset: const Offset(2, 2),
+                                ),
+                              ],
                               borderRadius: BorderRadius.circular(60),
-                                color: bottomColor
+                              color: bottomColor,
                             ),
                             child: ClipRRect(
-                            borderRadius: BorderRadius.circular(60),
-                            child: Image.network(
-                              "https://i.pinimg.com/474x/a6/da/73/a6da735b32f6b3a89f3c06584b63dcb9.jpg",
-                              fit: BoxFit.cover,
+                              borderRadius: BorderRadius.circular(60),
+                              child: Image.network(
+                                "https://i.pinimg.com/474x/a6/da/73/a6da735b32f6b3a89f3c06584b63dcb9.jpg",
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Center(
+                                    child: Icon(Icons.error),
+                                  );
+                                },
+                              ),
                             ),
-                          ),
                           ),
                         ],
                       ),
-
-                      Text(
-                        "Question:",
+                      const Text(
+                        "Câu hỏi:",
                         style: TextStyle(
                           fontSize: 25,
-                          color: bottomColor
+                          color: Color.fromRGBO(28, 50, 91, 1),
                         ),
                       ),
                       Text(
-                        "Why is Paris considered one of the most popular tourist destinations in the world?",
+                        questions[currentQuestionIndex]['question'],
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const Text(
+                        "Các đp án:",
                         style: TextStyle(
+                          fontSize: 18,
+                          color: Color.fromRGBO(28, 50, 91, 1),
+                        ),
+                      ),
+                      ...questions[currentQuestionIndex]['answers'].map<Widget>((answer) {
+                        return Text(
+                          answer,
+                          style: const TextStyle(
                             fontSize: 13,
-                            color: Colors.black
-                        ),
-                      ),
+                            color: Colors.black,
+                          ),
+                        );
+                      }).toList(),
+                      const SizedBox(height: 20),
                       Text(
-                        "The answers:",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: bottomColor
-                        ),
-                      ),
-                      Text(
-                        "A. Paris is famous for its rich history, iconic landmarks like the Eiffel Tower, and cultural attractions such as the Louvre Museum, which houses the Mona Lisa.\n"
-                          "B. It is known for its culinary excellence, offering a wide variety of French dishes and desserts that attract food enthusiasts from around the globe.\n"
-                          "C. Paris is often referred to as the City of Love, attracting couples for romantic experiences, including cruises along the Seine River\n"
-                          "D. All of the above.\n",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.black
+                        'Điểm hiện tại: $score',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  height: screenHeight*(1-share),
+                  height: screenHeight * (1 - share),
                   width: screenWidth,
                   decoration: BoxDecoration(
-                      color: bottomColor,
-                    borderRadius: BorderRadius.only(
+                    color: bottomColor,
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(80),
                     ),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                          2, (iCol) =>
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                          2, (iRow) =>
-                              Container(
-                                constraints: BoxConstraints(
+                    children: List.generate(
+                      2,
+                      (iCol) => Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          2,
+                          (iRow) {
+                            String answer = (iCol == 0 && iRow == 0)
+                                ? "A"
+                                : (iCol == 0 && iRow == 1)
+                                    ? "B"
+                                    : (iCol == 1 && iRow == 0)
+                                        ? "C"
+                                        : "D";
+                            return GestureDetector(
+                              onTap: () => _selectAnswer(answer),
+                              child: Container(
+                                constraints: const BoxConstraints(
                                   minHeight: 78,
                                 ),
-                                margin: EdgeInsets.all(5),
-                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                                margin: const EdgeInsets.all(5),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 20),
                                 width: 160,
                                 decoration: BoxDecoration(
-                                  color:  (iCol == 0 && iRow == 0) ?  Color.fromRGBO(168, 205, 137, 1)
-                                          : ( iCol ==0 && iRow == 1 ? Color.fromRGBO(198, 231, 255, 1)
-                                          : (iCol == 1 && iRow ==0) ? Color.fromRGBO(249, 192, 171, 1)
-                                          :                           Color.fromRGBO(251, 251, 251, 1)),
+                                  color: selectedAnswer == answer
+                                      ? (answer == questions[currentQuestionIndex]['correctAnswer']
+                                          ? Colors.green
+                                          : Colors.red)
+                                      : (iCol == 0 && iRow == 0)
+                                          ? Colors.orange
+                                          : (iCol == 0 && iRow == 1)
+                                              ? Colors.blue
+                                              : (iCol == 1 && iRow == 0)
+                                                  ? Colors.yellow
+                                                  : Colors.redAccent,
                                   borderRadius: BorderRadius.only(
-                                    topLeft:(iCol == 0 && iRow == 0) ? Radius.circular(border1): ( iCol ==0 && iRow == 1 ? Radius.circular(border2) : (iCol == 1 && iRow ==0) ? Radius.circular(border4) : Radius.circular(border3) ),
-                                    topRight: (iCol == 0 && iRow == 0) ? Radius.circular(border2): ( iCol ==0 && iRow == 1 ? Radius.circular(border1) : (iCol == 1 && iRow ==0) ? Radius.circular(border3) : Radius.circular(border2) ),
-                                    bottomRight: (iCol == 0 && iRow == 0) ? Radius.circular(border3): ( iCol ==0 && iRow == 1 ? Radius.circular(border4) : (iCol == 1 && iRow ==0) ? Radius.circular(border2) : Radius.circular(border1) ),
-                                    bottomLeft: (iCol == 0 && iRow == 0) ? Radius.circular(border4): ( iCol ==0 && iRow == 1 ? Radius.circular(border3) : (iCol == 1 && iRow ==0) ? Radius.circular(border1) : Radius.circular(border4) ),
+                                    topLeft: Radius.circular(
+                                        (iCol == 0 && iRow == 0)
+                                            ? border1
+                                            : (iCol == 0 && iRow == 1)
+                                                ? border2
+                                                : (iCol == 1 && iRow == 0)
+                                                    ? border4
+                                                    : border3),
+                                    topRight: Radius.circular(
+                                        (iCol == 0 && iRow == 0)
+                                            ? border2
+                                            : (iCol == 0 && iRow == 1)
+                                                ? border1
+                                                : (iCol == 1 && iRow == 0)
+                                                    ? border3
+                                                    : border2),
+                                    bottomRight: Radius.circular(
+                                        (iCol == 0 && iRow == 0)
+                                            ? border3
+                                            : (iCol == 0 && iRow == 1)
+                                                ? border4
+                                                : (iCol == 1 && iRow == 0)
+                                                    ? border2
+                                                    : border1),
+                                    bottomLeft: Radius.circular(
+                                        (iCol == 0 && iRow == 0)
+                                            ? border4
+                                            : (iCol == 0 && iRow == 1)
+                                                ? border3
+                                                : (iCol == 1 && iRow == 0)
+                                                    ? border1
+                                                    : border4),
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.4),
+                                      color: Colors.grey.withOpacity(0.4),
                                       spreadRadius: 1,
                                       blurRadius: 3,
-                                      offset: Offset(2, 2),
+                                      offset: const Offset(2, 2),
                                     ),
                                   ],
                                 ),
                                 child: Center(
                                   child: Text(
-                                        (iCol == 0 && iRow == 0) ?  "A"
-                                        : ( iCol ==0 && iRow == 1 ? "B"
-                                        : (iCol == 1 && iRow ==0) ? "C"
-                                        :                           "D"),
+                                    answer,
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
-                                      color: bottomColor
+                                      color: bottomColor,
                                     ),
                                   ),
                                 ),
-                              )
-                            )
-                          )
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
+                  ),
                 ),
               ],
             ),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
-}
-
-
-
-
-class Question {
-  String audioUrl;
-  String correctAnswer;
-  int id;
-  List<String> options;
-  String question;
-
-  Question(this.audioUrl, this.correctAnswer, this.id, this.options, this.question);
-
-  factory Question.fromSnapshot(DataSnapshot snapshot) {
-    var audioUrl = snapshot.child('audio_url').value as String?;
-    var correctAnswer = snapshot.child('correct_answer').value as String?;
-    var id = int.tryParse(snapshot.key ?? '0') ?? 0;
-    var optionsSnapshot = snapshot.child('options').value as List<dynamic>?;
-    var questionText = snapshot.child('question').value as String?;
-    List<String> options = optionsSnapshot?.map((e) => e.toString()).toList() ?? [];
-    return Question(
-      audioUrl ?? '',
-      correctAnswer ?? '',
-      id,
-      options,
-      questionText ?? '',
-    );
-  }
-
-}
-
-Future<List<Question>> fetchQuestions() async {
-  DatabaseReference ref = FirebaseDatabase.instance.ref('languages/0/courses/0/lessons/0/exercises/5/questions');
-  DataSnapshot snapshot = await ref.get();
-  List<Question> questions = [];
-  for (var child in snapshot.children) {
-    questions.add(Question.fromSnapshot(child));
-  }
-  return questions;
 }

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'Components/SelectLesson.dart';
+import 'Components/SelectExercise.dart';
 
-<<<<<<< HEAD
 class KoreanContent extends StatefulWidget {
   @override
   State<KoreanContent> createState() => _KoreanContentState();
 }
 
 class _KoreanContentState extends State<KoreanContent> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
   int selectedValue = 0;
 
   List<String> icons = [
@@ -16,6 +21,25 @@ class _KoreanContentState extends State<KoreanContent> {
     "assets/icons/mixed.png"
   ];
   List<String> title = ["Lesson", "Exercise", "Game", "Mixed"];
+
+  void updateCourseStartData(String language) async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      String userId = user.uid;
+      String timestamp = DateTime.now().toIso8601String();
+
+      await _database.child('users/$userId/courseStart').set({
+        'language': language,
+        'timestamp': timestamp,
+      }).then((_) {
+        print('Data updated successfully');
+      }).catchError((error) {
+        print('Failed to update data: $error');
+      });
+    } else {
+      print('No user is signed in');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +129,9 @@ class _KoreanContentState extends State<KoreanContent> {
                 setState(() {
                   selectedValue = index;
                 });
+                if (title[index] == "Exercise") {
+                  updateCourseStartData('KOREAN'); // Cập nhật dữ liệu khi nhấn vào Exercise
+                }
               },
             ),
             SizedBox(height: 20),
@@ -140,7 +167,26 @@ class _MainContentWidget extends StatelessWidget {
         itemCount: icons.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () => onButtonTap(index),
+            onTap: () {
+              onButtonTap(index);
+              if (title[index] == "Lesson") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectLesson(
+                      courseNames: ["Giao Tiếp", "Phát Âm"], // Pass the actual course names here
+                    ),
+                  ),
+                );
+              } else if (title[index] == "Exercise") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectExercise(),
+                  ),
+                );
+              }
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -176,16 +222,3 @@ class _MainContentWidget extends StatelessWidget {
   }
 }
 
-=======
-class KoreanContent extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Container(
-        height: 100,
-      )
-    );
-  }
-}
->>>>>>> 36acb6c6c9dd7993626cf3e40f6ea83819079e4f
