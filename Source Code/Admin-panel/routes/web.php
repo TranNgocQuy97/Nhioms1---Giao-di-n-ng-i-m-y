@@ -6,6 +6,7 @@ use App\Http\Controllers\FirebaseLanguageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FirebaseLessonController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\FeedbackController;
 
 
 /*
@@ -86,3 +87,8 @@ Route::prefix('languages/{language}/courses/{courseId}/lessons/{lessonId}/exerci
 Route::get('languages/{language}/courses/{courseId}/lessons/{lessonId}/exercises/{exerciseId}/questions/{questionId}/view', [FirebaseLanguageController::class, 'showQuestionDetails'])->name('languages.courses.lessons.exercises.questions.view');
 
 Route::get('admin/progress', [ProgressController::class, 'index'])->name('admin.progress');
+
+Route::prefix('admin')->group(function () {
+    Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::post('feedback/{key}/answer', [FeedbackController::class, 'answer'])->name('feedback.answer');
+});
