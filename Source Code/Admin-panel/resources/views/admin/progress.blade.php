@@ -61,47 +61,52 @@
         </div>
     </div>
 
-    <!-- Leaderboard Widget -->
+    <!-- Leaderboard Table -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Leaderboard</h3>
+            <h3 class="card-title">Ranking</h3>
         </div>
         <div class="card-body">
-            <canvas id="leaderboardChart" width="400" height="200"></canvas>
+            <table id="leaderboardTable" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($leaderboardArray as $index => $leader)
+                        <tr>
+                            <td>
+                                {{ $leader['name'] }}
+                                @if($index === 0)
+                                    <i class="fas fa-gem text-primary ml-2" title="Top Scorer"></i>
+                                @endif
+                            </td>
+                            <td>{{ $leader['score'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-
-    @push('js')
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            // Dữ liệu cho chart
-            const leaderboardData = @json($leaderboardArray);
-            const labels = leaderboardData.map(item => item.name);
-            const scores = leaderboardData.map(item => item.score);
-
-            // Tạo chart
-            const ctx = document.getElementById('leaderboardChart').getContext('2d');
-            const leaderboardChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Score',
-                        data: scores,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        </script>
-    @endpush
 @stop
+
+@push('js')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#leaderboardTable').DataTable({
+                "order": [[1, "desc"]], 
+                "paging": true,
+                "searching": false,
+                "info": false
+            });
+        });
+    </script>
+@endpush
+
+@push('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+@endpush

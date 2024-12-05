@@ -69,12 +69,14 @@ class FirebaseConnectionController extends Controller
     public function show($id)
     {
         $user = $this->database->getReference("users/{$id}")->getValue();
-
+    
         if (!$user) {
             return redirect()->route('admin.users.index')->with('error', 'User not found.');
         }
-
-        return view('admin.users.show', ['user' => $user]);
-    }
+    
+        $courseHistory = $user['courseStart'] ?? [];
+    
+        return view('admin.users.show', compact('user', 'courseHistory'));
+    }    
 
 }
